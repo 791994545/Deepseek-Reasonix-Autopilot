@@ -134,6 +134,21 @@ Every mistake makes the system smarter. Every review feeds back into routing wei
 
 ---
 
+## ✅ System Test · 系统测试
+
+| Test · 测试项 | Result · 结果 | Detail · 详情 |
+|---------------|--------------|---------------|
+| Skill discovery · 技能发现 | ✅ 10/10 | 83/83 skills, all with SKILL.md |
+| API Key env var · 安全 | ✅ | `\${DEEPSEEK_API_KEY}` only, no plaintext |
+| Watchdog · 看门狗 | ✅ 7/7 | graceful stop, state init, PID cleanup, log rotation, perf verification |
+| Error pattern linkage · 错误关联 | ✅ | All entries have `skill_id` |
+| Routing weights · 权重回调 | ✅ | Auto-generated from error patterns |
+| skill_performance · 复盘 | ✅ | 2 records, full format |
+| Experiences · 经验积累 | ✅ | 2 cross-session entries |
+| Routing table · 路由表 | ✅ | 17 types + catch-all + weight reference |
+| Execution rules · 执行规则 | ✅ | multi_edit + concurrent commands in HARD-GATE-TOOL |
+| AGENTS.md config · 全局配置 | ✅ | Default-on mode + override rules + dynamic scanning |
+
 ## 🚀 Quick Start · 快速开始
 
 ### Prerequisites · 前置条件

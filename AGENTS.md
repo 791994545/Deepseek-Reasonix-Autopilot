@@ -8,6 +8,7 @@
 
 STEP 1: 启动看门狗（`run_background("python ~/.reasonix/scripts/watchdog.py")`）+ 加载 error_patterns.json + memory/experiences（最近 5 条）+ 扫描 <available_tools> + <available_skills> → [√]
 STEP 2: 加载 9 条全局记忆（memory/global/）+ project-rules.md（如存在）→ [√]
+注：不维护硬编码技能列表。Phase 1 由 skill-router 动态扫描 ~/.reasonix/skills/ 发现所有技能。
 STEP 3: 根据用户第一条消息执行 Phase 0 复杂度评估（1-10）→ 自动进入对应路径:
   · Quick (≤3) → 直接执行，跳过 Phase 2/2.3/2.5/3.2/3.5/4.5
   · Standard (4-7) → 走标准流程（Phase 2a→2.3→2.5→3→4→4.5→5）

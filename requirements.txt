@@ -1,0 +1,30 @@
+# ====================================
+# Reasonix Autopilot — 依赖清单
+# ====================================
+# 安装：pip install -r requirements.txt
+# 注意：部分依赖需单独安装（见下方说明）
+
+# === 核心必需 ===
+# Python 3.10+  (运行看门狗 watchdog.py 及技能脚本)
+# Git 2.30+    (版本控制、git-commit 技能、gitnexus)
+
+# === 可选但推荐 ===
+# gitnexus CLI
+#   wget https://github.com/gitnexus/gitnexus/releases/latest/download/gitnexus-<platform>-<arch>.tar.gz
+#   或：npm install -g @gitnexus/cli
+#   用途：改代码前影响分析（gitnexus-auto 技能）
+
+# gh CLI (GitHub CLI)
+#   Windows: winget install --id GitHub.cli
+#   Mac:     brew install gh
+#   Linux:   sudo apt install gh
+#   用途：PR/Issue/Actions 操作（github 技能）
+#   安装后执行 gh auth login
+
+# Node.js 18+
+#   用途：brainstorming 技能（web 服务器）、部分前端工具
+#   下载：https://nodejs.org/
+
+# === Python 依赖 ===
+# watchog.py 纯标准库，无外部依赖
+# 各技能脚本的 Python 依赖视具体技能而定

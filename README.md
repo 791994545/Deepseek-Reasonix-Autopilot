@@ -14,6 +14,42 @@
 
 ---
 
+## 🌐 Cross-Platform · 跨平台
+
+| Platform · 平台 | Status · 状态 | Notes · 说明 |
+|----------------|--------------|-------------|
+| **Windows** | ✅ 完整支持 | watchdog.py 纯 Python，含 win32 分支；Powershell 脚本兼容 |
+| **Linux** | ✅ 完整支持 | 核心系统全兼容；额外支持 .sh 脚本 |
+| **macOS** | ✅ 完整支持 | 同 Linux；额外支持 macOS 原生截图脚本 |
+
+核心系统（watchdog + full-autonomous + skill-router）为纯 Python，**三平台通用**。个别技能含平台专用脚本（.sh / .ps1 / .swift），按需使用。
+
+## 🔧 Dependencies · 依赖
+
+```bash
+# 查看完整依赖清单
+cat requirements.txt
+
+# 核心必需
+# - Python 3.10+（watchdog 及技能脚本）
+# - Git 2.30+（版本控制）
+
+# 可选推荐
+# - gitnexus CLI（改代码前影响分析）
+# - gh CLI（GitHub 操作）
+# - Node.js 18+（部分技能）
+
+# 安装方式见 requirements.txt
+```
+
+## 📋 Overview · 概览
+
+**Reasonix Autopilot** is a full-lifecycle autonomous development system built on top of the Reasonix platform. It transforms how AI assistants work — from single-shot question answering to **multi-phase, self-correcting, self-improving development pipelines**.
+
+本系统不是简单的配置集合，而是一套完整的** AI 开发方法论**：从任务评估、技能路由、执行编排、多策略重试、合规审计，到复盘学习、权重回调，构成了一个完整的**自进化闭环**。
+
+> **技能发现**：不维护硬编码技能列表。所有 83 个技能由 skill-router 在 Phase 0 动态扫描 `~/.reasonix/skills/` 自动发现加载。新增技能只需放入目录即可，无需修改任何配置文件。
+
 ## 🗂 Architecture · 架构
 
 ```
@@ -140,11 +176,11 @@ The first time you start Reasonix with this config, the system will:
 
 ## 📚 Skill Library · 技能库（83 Skills）
 
-### 🔷 Core Built-in Skills · 内置核心技能（19）
+> 技能由 skill-router 动态扫描发现，无需硬编码列表。以下仅为常用技能示例。
 
-These skills are orchestrated by `full-autonomous` across Phases 0→5. No manual loading needed.
+### 🔷 Core Skills · 核心技能
 
-由 full-autonomous 自动编排，无需手动加载。
+自动编排在 Phase 0→5 流程中，无需手动加载。
 
 | Skill · 技能 | Phase | Purpose · 用途 |
 |-------------|-------|----------------|

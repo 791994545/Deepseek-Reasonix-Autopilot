@@ -2,8 +2,7 @@
 
 name: full-autonomous
 description: 五阶段全自动开发剧本 — Phase 0→5，自适应路径 + task-executor 并行 + compliance-guard 审计
-version: 3.1.0
-builtin-skills: brainstorming, grill-me, grill-with-docs, zoom-out, writing-plans, improve-codebase-architecture, security-best-practices, diagnose, self-improving, ralph-planner, ralph-loop, ralph, no-confirm-silent, proactive-agent, handoff, memory-manager, gitnexus-auto, using-git-worktrees, finishing-a-development-branch
+version: 3.2.0
 
 ---
 
@@ -22,6 +21,7 @@ builtin-skills: brainstorming, grill-me, grill-with-docs, zoom-out, writing-plan
 
 ## 🔴 执行前检查
 > **默认开启**：AGENTS.md MANDATORY_SCRIPT STEP 3 已做复杂度评估，此文件从 Phase 1 或直接 Phase 3 开始执行。
+> **技能发现**：不维护硬编码技能列表。所有技能由 skill-router 在 Phase 0 动态扫描 `~/.reasonix/skills/` 发现加载。
 > **触发词后备**：用户说"全自动"时强制 Full 路径。
 > **快速跳过**：用户说"直接回答/快速回答"时强制 Quick 路径（跳过整个 Phase 流程，直接执行）。
 

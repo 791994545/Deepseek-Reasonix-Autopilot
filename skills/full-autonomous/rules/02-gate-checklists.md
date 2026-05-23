@@ -28,5 +28,7 @@
 - [ ] handoff 已完成（如任务未完成）
 - [ ] 交付报告已输出（silent 模式精简版/正常模式标准版）
 - [ ] memory-manager 结束清理已完成
-- [ ] self-improving 复盘已记录，skill_performance.json 已追加
+- [ ] 🔴 **skill_performance.json 已用 write_file 物理写入新记录**（只追加在变量里不算）
+- [ ] 🔴 **memory/experiences/ 已用 write_file 物理写入经验文件**
+- [ ] 🔴 **read_file 验证确认最后一条记录已在磁盘上**
 - [ ] 用户已通知

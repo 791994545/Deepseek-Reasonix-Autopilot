@@ -118,8 +118,8 @@ version: 3.2.0
 - [√/⏭️] STEP 5.3: **主动归档** — 若任务未完成或后续需续做 → 调用 `handoff` 生成交接文档 → [√] {已生成/无需交接}
 - [√/⏭️] STEP 5.4: **交付报告** — 默认标准格式；若 Phase 0 检测到 silent 模式则输出精简版 → [√]
 - [√/⏭️] STEP 5.5: **memory 清理** — 调用 `memory-manager` 做 session 结束清理 → [√]
-- [√] **STEP 5.6: 强制复盘 + 经验写入**（必须写，不写 = 违例）
-  a) 追加复盘记录到 `skill_performance.json`，格式：
+- [√] **STEP 5.6: 强制复盘 + 经验写入**（🔴 必须写，跳过记 2 次违例）
+  a) 追加复盘记录到 `skill_performance.json` — **必须使用 `write_file` 物理写入**，格式：
     ```json
     {
       "timestamp": "{ISO时间}",
@@ -135,9 +135,10 @@ version: 3.2.0
       "skills_skipped": ["{skill3}"]
     }
     ```
-  b) 写入经验到 `memory/experiences/` — 文件名 `{ISO日期}-{任务摘要}.md`，包含：做了什么、遇到什么问题、如何解决的、下次注意什么
+  b) 写入经验到 `memory/experiences/` — **必须使用 `write_file` 物理写入**，文件名 `{ISO日期}-{任务摘要}.md`，内容包含：做了什么、遇到什么问题、如何解决的、下次注意什么
   c) learnings/ 超过 20 条时删除最旧文件
-  d) 验证写入是否成功：`read_file skill_performance.json` 最后一条应为刚写的记录 → [√] {已写入/N 条}
+  d) 🔴 验证写入是否成功：`read_file skill_performance.json` 最后一条应为刚写的记录 → 若未找到，追加违例至 error_patterns.json 并重写
+  → [√] {已写入/N 条}
 - [√] STEP 5.7: 清理当前会话日志（`.jsonl` / `.meta.json` / `checkpoints/`），保留 `.bak` 备份
 - [√] STEP 5.8: 通知用户
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅

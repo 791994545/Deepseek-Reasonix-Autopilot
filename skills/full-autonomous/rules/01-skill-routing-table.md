@@ -25,6 +25,14 @@
 | **media** | 视频/音频/截图/图标 | youtube-downloader, video-comparer, twitter-reader | cli-demo-generator, llm-icon-finder, capture-screen | — | — |
 | **i18n** | 国际化/本地化 | i18n-expert | — | — | — |
 | **transcript** | 语音转录/字幕修正 | transcript-fixer | — | — | — |
+| **network-debug** | 网络诊断/Cloudflare/SSH | debugging-network-issues, cloudflare-troubleshooting, tunnel-doctor | — | — | — |
+| **data-collection** | 数据采集/爬虫/金融 | scrapling-skill, financial-data-collector, douban-skill | feishu-doc-scraper | — | — |
+| **product-analysis** | 竞品分析/产品调研 | competitors-analysis, product-analysis | — | — | — |
+| **excel** | Excel 操作/自动化 | excel-automation | — | — | — |
+| **macos** | macOS 系统工具 | macos-cleaner | — | capture-screen | — |
+| **china-tools** | 中国区特有工具 | gangtise-copilot, ima-copilot | daymade-docs | — | — |
+| **github-contrib** | GitHub 贡献策略 | github-contributor | — | — | — |
+| **repomix** | Repomix 解包/分析 | repomix-unmixer | repomix-safe-mixer | — | — |
 | **documentation** | 文档/知识库/Wiki/说明 | doc-coauthoring, obsidian-markdown, internal-comms | json-canvas, obsidian-bases, knowledge-capture | research-documentation, meeting-intelligence | — |
 | **design-system** | 设计系统/组件库/shadcn | shadcn, composition-patterns, brand-guidelines | theme-factory, figma, web-artifacts-builder | react-best-practices, web-design-guidelines | webapp-testing |
 | **algorithmic-art** | 算法艺术/生成艺术/p5.js | algorithmic-art, prototype | frontend-design, theme-factory | — | — |

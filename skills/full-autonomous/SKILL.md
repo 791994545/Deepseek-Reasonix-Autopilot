@@ -26,8 +26,8 @@ version: 3.4.0
 > **快速跳过**：用户说"直接回答/快速回答"时强制 Quick 路径（跳过整个 Phase 流程，直接执行）。
 
 1. 递归深度检测：上下文 `[Auto] === full-autonomous` 出现 ≤2 次 → 继续；否则中止 → [√]
-2. 看门狗已在 AGENTS.md STEP 1 启动，此处仅初始化 state.json：`write_file` state.json → [√]
-3. 输出启动标记 → [Auto] === full-autonomous v3.1 启动 === 时间 → [√]
+2. 看门狗已在 AGENTS.md STEP 1 启动，此处初始化 state.json：`write_file state.json {"phase":0,"step":0,"startedAt":"{ISO时间}"}` → [√]
+3. 输出启动标记 → [Auto] === full-autonomous v3.4 启动 === 时间 → [√]
 
 ## Phase 0: 分类
 <超快速路径入口> 若复杂度 ≤ 3 且 类型为 analysis/explore/diagnose → 输出类型后直接跳 Phase 3，跳过其余 → [√]
@@ -40,6 +40,7 @@ version: 3.4.0
 - [√] **合规预检** — 调用 `compliance-check` 验证 Rule 0（技能预检）/ Rule 2（简洁性）/ Rule 8（读后写）→ [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 0 PASSED ===
+- 更新 state.json：`write_file state.json {"phase":1,"step":"PASS","startedAt":"{ISO时间}"}` → [√]
 
 ## Phase 1: 装配
 - 查 rules/01a-routing-quick-index.md → 匹配任务类型获取 Core 技能包 → 需要扩展技能时回查 rules/01-skill-routing-table.md 取 Enhanced/Extended/Testing → 加载 → [√] N 个
@@ -94,10 +95,12 @@ version: 3.4.0
 - [√] STEP 3.3: Level 0 并行派发 → Standard/Full 路径默认启用 `ralph-loop` 模式（红-绿-重构循环）；Quick 路径单次执行 → [√] 模式: {ralph-loop|单次}
 - [√] STEP 3.4: 聚合结果 → 下一层依赖
 - [√] STEP 3.5: 子任务重试 → 连续失败时加载 `ralph` 做计划→执行→检查→重试循环（最多 3 种不同策略后标记阻塞）→ [√]
-- [√] STEP 3.6: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
-- [√] STEP 3.7: 自检 rules/04-self-check.md
+- [√] STEP 3.6: 更新 `state.json` 记录当前 phase/step → `write_file state.json {\"phase\":3,\"step\":3.6,\"startedAt\":\"{ISO时间}\"}`
+- [√] STEP 3.7: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
+- [√] STEP 3.8: 自检 rules/04-self-check.md
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 3 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
+- 更新 state.json：`write_file state.json {"phase":3,"step":"PASS","startedAt":"{ISO时间}"}` → [√]
 === Phase 3 PASSED ===
 
 ## Phase 4: 验证 — 每步独立 [√]
@@ -107,6 +110,7 @@ version: 3.4.0
 - [√/⏭️] STEP 4.4: **应用内测** — 调用路由表 `testing` 行匹配技能（如 dogfood/webapp-testing/midscene-test）→ [√] {已测试/N 技能/不适用}
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 4 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
+- 更新 state.json：`write_file state.json {"phase":4,"step":"PASS","startedAt":"{ISO时间}"}` → [√]
 === Phase 4 PASSED ===
 
 ## Phase 4.5: 分支收尾检查 — 每步独立 [√/⏭️]
@@ -144,7 +148,7 @@ version: 3.4.0
   c) learnings/ 超过 20 条时删除最旧文件
   d) 🔴 验证写入是否成功：`read_file skill_performance.json` 最后一条应为刚写的记录 → 若未找到，追加违例至 error_patterns.json 并重写
   → [√] {已写入/N 条}
-- [√] STEP 5.8: 清理当前会话日志（`.jsonl` / `.meta.json` / `checkpoints/`），保留 `.bak` 备份
+- [√] STEP 5.8: **日志轮转** — 检查 usage.jsonl 是否 >512KB → 若是则归档为 `usage-{ISO日期}.jsonl.bak` 并新建空文件；清理 `.jsonl` / `.meta.json` / `checkpoints/`，保留 `.bak` → [√] {正常/已轮转}
 - [√] STEP 5.9: 通知用户
 - [√] **STEP 5.10: 自我改进** — 调用 `self-improving` 做 7 步反思整理（初始化→记录→关联→简化→提升→提取→回顾）→ [√] {pending: N, high-priority: M}
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅

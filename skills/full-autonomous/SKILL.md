@@ -42,7 +42,7 @@ version: 3.4.0
 === Phase 0 PASSED ===
 
 ## Phase 1: 装配
-- 查 rules/01-skill-routing-table.md → 获取技能组合包 → 加载 → [√] N 个
+- 查 rules/01a-routing-quick-index.md → 匹配任务类型获取 Core 技能包 → 需要扩展技能时回查 rules/01-skill-routing-table.md 取 Enhanced/Extended/Testing → 加载 → [√] N 个
 - Quick → 跳 Phase 3 | Standard → Phase 2a | Full → Phase 2b
 === Phase 1 PASSED ===
 

@@ -66,6 +66,7 @@
 | Phase 4→5 | `finishing-a-development-branch` | 完成合并/PR/保留/丢弃决策 |
 | Phase 5 | `handoff` | 任务未完成时生成交接文档 |
 | Phase 5 | `memory-manager`（结束清理）| session 结束时清理记忆 |
+| Phase 5 | `self-improving` | 反思整理→记录错误/学习/→关联→简化→提升→技能提取→回顾 |
 
 加载 full-autonomous 时，根据复杂度路径自动决定是否调用：
 - **Quick** — 仅调用 memory-manager、no-confirm-silent/proactive-agent

@@ -142,6 +142,7 @@ version: 3.2.0
   → [√] {已写入/N 条}
 - [√] STEP 5.7: 清理当前会话日志（`.jsonl` / `.meta.json` / `checkpoints/`），保留 `.bak` 备份
 - [√] STEP 5.8: 通知用户
+- [√] **STEP 5.9: 自我改进** — 调用 `self-improving` 做 7 步反思整理（初始化→记录→关联→简化→提升→提取→回顾）→ [√] {pending: N, high-priority: M}
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 [State] 删除 state.json
 === Phase 5 PASSED ===

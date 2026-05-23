@@ -31,4 +31,5 @@
 - [ ] 🔴 **skill_performance.json 已用 write_file 物理写入新记录**（只追加在变量里不算）
 - [ ] 🔴 **memory/experiences/ 已用 write_file 物理写入经验文件**
 - [ ] 🔴 **read_file 验证确认最后一条记录已在磁盘上**
+- [ ] self-improving 反思整理已完成（或注明无需记录）
 - [ ] 用户已通知

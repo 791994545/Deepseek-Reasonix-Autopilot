@@ -67,6 +67,10 @@
 | Phase 5 | `handoff` | 任务未完成时生成交接文档 |
 | Phase 5 | `memory-manager`（结束清理）| session 结束时清理记忆 |
 | Phase 5 | `self-improving` | 反思整理→记录错误/学习/→关联→简化→提升→技能提取→回顾 |
+| Phase 5 | `memory-hygiene` | 向量记忆审计清理（LanceDB 臃肿时）|
+| Phase 3 | `tdd` | RED-GREEN-REFACTOR 测试驱动开发（与 ralph-loop 配合）|
+| Phase 4 | `dogfood` | 系统性探索测试 web 应用（UX bug/功能问题）|
+| 全 Phase | `compliance-check` | 每次 Phase 出口前验证合规性 |
 
 加载 full-autonomous 时，根据复杂度路径自动决定是否调用：
 - **Quick** — 仅调用 memory-manager、no-confirm-silent/proactive-agent

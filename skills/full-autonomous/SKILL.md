@@ -37,6 +37,7 @@ version: 3.2.0
 - **分析/评估/探索类任务自动降级为 Quick 路径**（跳过 Phase 2 全套设计流程，直接进入 Phase 3 并行读取）→ [√]
 - 技能缺口检测 → 有则触发 write-a-skill → [√]
 - 启动看门狗 + 加载 `memory-manager` 做启动时压缩检测 → [√]
+- [√] **合规预检** — 调用 `compliance-check` 验证 Rule 0（技能预检）/ Rule 2（简洁性）/ Rule 8（读后写）→ [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 0 PASSED ===
 
@@ -95,6 +96,8 @@ version: 3.2.0
 - [√] STEP 3.5: 子任务重试 → 连续失败时加载 `ralph` 做计划→执行→检查→重试循环（最多 3 种不同策略后标记阻塞）→ [√]
 - [√] STEP 3.6: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
 - [√] STEP 3.7: 自检 rules/04-self-check.md
+- [√/⏭️] STEP 3.8: **TDD 补充** — 若任务可测试且有测试框架 → 加载 `tdd` 做 RED-GREEN-REFACTOR 循环（若已启用 ralph-loop 则跳过）→ [√] {tdd活动|已覆盖}
+- [√] **合规出口** — 调用 `compliance-check` 验证 Phase 3 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 3 PASSED ===
 
@@ -103,6 +106,8 @@ version: 3.2.0
 - [√] STEP 4.2: 失败 → diagnose → 修复 → 重跑
 - [√] STEP 4.3: Full 路径 → security-best-practices 最终审查
 - [√/⏭️] STEP 4.4: **分析类质量自检**: 聚合结果是否覆盖全部提问点？有无文件读失败？输出是否结构化？→ ✅
+- [√/⏭️] STEP 4.5: **应用内测** — 若有 web 应用可交互 → 加载 `dogfood` 做系统性探索测试（发现 UX bug、功能问题）→ [√] {已测试/不适用}
+- [√] **合规出口** — 调用 `compliance-check` 验证 Phase 4 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 4 PASSED ===
 
@@ -119,7 +124,8 @@ version: 3.2.0
 - [√/⏭️] STEP 5.3: **主动归档** — 若任务未完成或后续需续做 → 调用 `handoff` 生成交接文档 → [√] {已生成/无需交接}
 - [√/⏭️] STEP 5.4: **交付报告** — 默认标准格式；若 Phase 0 检测到 silent 模式则输出精简版 → [√]
 - [√/⏭️] STEP 5.5: **memory 清理** — 调用 `memory-manager` 做 session 结束清理 → [√]
-- [√] **STEP 5.6: 强制复盘 + 经验写入**（🔴 必须写，跳过记 2 次违例）
+- [√/⏭️] STEP 5.6: **记忆优化** — 若 LanceDB 向量记忆臃肿 → 调用 `memory-hygiene` 做审计清理（Clawdbot 专用）→ [√/⏭️]
+- [√] **STEP 5.7: 强制复盘 + 经验写入**（🔴 必须写，跳过记 2 次违例）
   a) 追加复盘记录到 `skill_performance.json` — **必须使用 `write_file` 物理写入**，格式：
     ```json
     {
@@ -140,9 +146,9 @@ version: 3.2.0
   c) learnings/ 超过 20 条时删除最旧文件
   d) 🔴 验证写入是否成功：`read_file skill_performance.json` 最后一条应为刚写的记录 → 若未找到，追加违例至 error_patterns.json 并重写
   → [√] {已写入/N 条}
-- [√] STEP 5.7: 清理当前会话日志（`.jsonl` / `.meta.json` / `checkpoints/`），保留 `.bak` 备份
-- [√] STEP 5.8: 通知用户
-- [√] **STEP 5.9: 自我改进** — 调用 `self-improving` 做 7 步反思整理（初始化→记录→关联→简化→提升→提取→回顾）→ [√] {pending: N, high-priority: M}
+- [√] STEP 5.8: 清理当前会话日志（`.jsonl` / `.meta.json` / `checkpoints/`），保留 `.bak` 备份
+- [√] STEP 5.9: 通知用户
+- [√] **STEP 5.10: 自我改进** — 调用 `self-improving` 做 7 步反思整理（初始化→记录→关联→简化→提升→提取→回顾）→ [√] {pending: N, high-priority: M}
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 [State] 删除 state.json
 === Phase 5 PASSED ===

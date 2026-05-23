@@ -96,7 +96,6 @@ version: 3.2.0
 - [√] STEP 3.5: 子任务重试 → 连续失败时加载 `ralph` 做计划→执行→检查→重试循环（最多 3 种不同策略后标记阻塞）→ [√]
 - [√] STEP 3.6: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
 - [√] STEP 3.7: 自检 rules/04-self-check.md
-- [√/⏭️] STEP 3.8: **TDD 补充** — 若任务可测试且有测试框架 → 加载 `tdd` 做 RED-GREEN-REFACTOR 循环（若已启用 ralph-loop 则跳过）→ [√] {tdd活动|已覆盖}
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 3 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 3 PASSED ===
@@ -105,8 +104,7 @@ version: 3.2.0
 - [√] STEP 4.1: 运行测试 → N/M（或分析类任务的质量自检）
 - [√] STEP 4.2: 失败 → diagnose → 修复 → 重跑
 - [√] STEP 4.3: Full 路径 → security-best-practices 最终审查
-- [√/⏭️] STEP 4.4: **分析类质量自检**: 聚合结果是否覆盖全部提问点？有无文件读失败？输出是否结构化？→ ✅
-- [√/⏭️] STEP 4.5: **应用内测** — 若有 web 应用可交互 → 加载 `dogfood` 做系统性探索测试（发现 UX bug、功能问题）→ [√] {已测试/不适用}
+- [√/⏭️] STEP 4.4: **应用内测** — 调用路由表 `testing` 行匹配技能（如 dogfood/webapp-testing/midscene-test）→ [√] {已测试/N 技能/不适用}
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 4 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 4 PASSED ===

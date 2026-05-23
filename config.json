@@ -18,7 +18,8 @@
     "C:\\Users\\Administrator": {
       "shellAllowed": [
         "git -C",
-        "python -c"
+        "python -c",
+        "git clone"
       ]
     }
   }

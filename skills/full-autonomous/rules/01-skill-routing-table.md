@@ -16,7 +16,15 @@
 | **mobile-app** | 移动端/React Native/手机 | react-native-skills, tdd | frontend-design, web-design-guidelines | composition-patterns, improve-codebase-architecture | webapp-testing, midscene-test |
 | **browser-auto** | 浏览器/爬虫/自动化/抓取 | agent-tars, screenshot | electron, midscene-test | diagnose, memory-manager | midscene-test |
 | **desktop-app** | 桌面/Electron/原生 | electron, agent-tars, screenshot | tdd, diagnose | memory-manager, self-improving | webapp-testing |
-| **git-operation** | Git/提交/PR/Issue/推送 | git-commit, github | gitnexus-auto, finishing-a-development-branch | using-git-worktrees | — |
+| **git-operation** | Git/提交/PR/Issue/推送 | git-commit, github, github-ops | gitnexus-auto, finishing-a-development-branch, github-contributor | using-git-worktrees | — |
+| **code-packaging** | 打包代码/安全扫描/分发包 | repomix-safe-mixer | repomix-unmixer | — | — |
+| **code-quality** | QA/测试/代码质量 | qa-expert | tdd, dogfood | webapp-testing | midscene-test |
+| **deep-research** | 深度研究/竞品分析/市场调研 | deep-research, fact-checker | competitors-analysis, product-analysis | financial-data-collector | — |
+| **skill-creation** | 技能创建/验证/打包 | skill-creator, skills-search | write-a-skill | — | skill-reviewer |
+| **prompt** | Prompt 优化/评估 | prompt-optimizer | promptfoo-evaluation | — | — |
+| **media** | 视频/音频/截图/图标 | youtube-downloader, video-comparer, twitter-reader | cli-demo-generator, llm-icon-finder, capture-screen | — | — |
+| **i18n** | 国际化/本地化 | i18n-expert | — | — | — |
+| **transcript** | 语音转录/字幕修正 | transcript-fixer | — | — | — |
 | **documentation** | 文档/知识库/Wiki/说明 | doc-coauthoring, obsidian-markdown, internal-comms | json-canvas, obsidian-bases, knowledge-capture | research-documentation, meeting-intelligence | — |
 | **design-system** | 设计系统/组件库/shadcn | shadcn, composition-patterns, brand-guidelines | theme-factory, figma, web-artifacts-builder | react-best-practices, web-design-guidelines | webapp-testing |
 | **algorithmic-art** | 算法艺术/生成艺术/p5.js | algorithmic-art, prototype | frontend-design, theme-factory | — | — |

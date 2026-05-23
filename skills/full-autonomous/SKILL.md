@@ -2,7 +2,7 @@
 
 name: full-autonomous
 description: 五阶段全自动开发剧本 — Phase 0→5，自适应路径 + task-executor 并行 + compliance-guard 审计
-version: 3.2.0
+version: 3.4.0
 
 ---
 
@@ -155,7 +155,8 @@ version: 3.2.0
 ## 引用文件
 | 路径 | 内容 | 何时看 |
 |------|------|--------|
-| rules/01-skill-routing-table.md | 路由表（类型→技能组合） | Phase 1 |
+| rules/01a-routing-quick-index.md | 路由精简索引（快速查找） | Phase 1 |
+| rules/01-skill-routing-table.md | 完整路由表（含Enhanced/Extended/Testing） | 需要扩展技能时 |
 | rules/02-gate-checklists.md | Phase 出口检查清单 | 每 Phase 结束时 |
 | rules/03-output-format.md | 输出模板（[Auto]/自检/危险操作） | 首次使用时 |
 | rules/04-self-check.md | 周期性自检流程 | Phase 3 |

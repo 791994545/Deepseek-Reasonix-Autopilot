@@ -23,5 +23,26 @@
     "skill_id": "full-autonomous",
     "fix": "评估任何文件前：1) 先 get_file_info 看大小 2) 小文件直接读完 3) 大文件至少读 head+tail+range 三段",
     "prevention": "get_file_info 判断文件大小后再决定读取策略，不默认截断"
+  },
+  {
+    "error": "硬流程步骤与动态路由混用 — tdd/dogfood 被写死在 Phase 流程而不是走 skill-router 发现",
+    "confidence": 0.75,
+    "skill_id": "full-autonomous",
+    "fix": "任务类型驱动的技能放路由表，通用步骤（compliance/preflight）才放 Phase 流程",
+    "prevention": "加新 Phase 步骤前先问：这个技能是通用门禁还是任务类型相关？"
+  },
+  {
+    "error": "Phase 5.6 复盘写入被跳过 — skill_performance 仅 2 条但已完成多次 full-autonomous",
+    "confidence": 0.85,
+    "skill_id": "full-autonomous",
+    "fix": "Phase 5.6 改\"必须写，跳过记 2 次违例\"且强制 write_file + read_file 验证",
+    "prevention": "看门狗加 Phase 5 验证：最后一次 perf 后 5 分钟内无新记录则自动记违例"
+  },
+  {
+    "error": "memory/global/ 存过期 OpenCode 文件 — opencode-skill-catalog 写 80 个技能，实际 113",
+    "confidence": 0.9,
+    "skill_id": "self-improving",
+    "fix": "skill-catalog 和 error-patterns 已删除，其余合并到 opencode-reasonix-bridge.md",
+    "prevention": "每季度审查 memory/global/ 文件时效性"
   }
 ]

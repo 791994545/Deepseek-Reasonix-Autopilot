@@ -19,7 +19,8 @@
       "shellAllowed": [
         "git -C",
         "python -c",
-        "git clone"
+        "git clone",
+        "python C:\\Users\\Administrator\\.reasonix\\scripts\\watchdog.py"
       ]
     }
   }

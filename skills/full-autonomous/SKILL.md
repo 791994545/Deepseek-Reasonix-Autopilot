@@ -26,7 +26,8 @@ version: 3.4.0
 > **快速跳过**：用户说"直接回答/快速回答"时强制 Quick 路径（跳过整个 Phase 流程，直接执行）。
 
 1. 递归深度检测：上下文 `[Auto] === full-autonomous` 出现 ≤2 次 → 继续；否则中止 → [√]
-2. 看门狗已在 AGENTS.md STEP 1 启动，此处初始化 state.json：`write_file state.json {"phase":0,"step":0,"startedAt":"{ISO时间}"}` → [√]
+2. 🔴 **启动看门狗**：`run_background("python ~/.reasonix/scripts/watchdog.py")` → [√] PID:{N}（若已运行则跳过）
+3. 初始化 state.json：`write_file state.json {"phase":0,"step":0,"startedAt":"{ISO时间}"}` → [√]
 3. 输出启动标记 → [Auto] === full-autonomous v3.4 启动 === 时间 → [√]
 
 ## Phase 0: 分类
@@ -36,7 +37,7 @@ version: 3.4.0
 - 评估复杂度 (1-10) → [√] 复杂度:N → {Quick|Standard|Full}
 - **分析/评估/探索类任务自动降级为 Quick 路径**（跳过 Phase 2 全套设计流程，直接进入 Phase 3 并行读取）→ [√]
 - 技能缺口检测 → 有则触发 write-a-skill → [√]
-- 启动看门狗 + 加载 `memory-manager` 做启动时压缩检测 → [√]
+- 加载 `memory-manager` 做启动时压缩检测 → [√]
 - [√] **合规预检** — 调用 `compliance-check` 验证 Rule 0（技能预检）/ Rule 2（简洁性）/ Rule 8（读后写）→ [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 0 PASSED ===

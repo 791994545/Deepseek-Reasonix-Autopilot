@@ -1,0 +1,9 @@
+- [opencode-core-rules](opencode-core-rules.md) — 12 条核心原则 — Rule 0 技能路由到 Rule 12 边做边解释
+- [opencode-error-patterns](opencode-error-patterns.md) — 已知错误模式库 — Flask/Python/CJK/交互问题及修复
+- [opencode-mandatory-script](opencode-mandatory-script.md) — 强制启动脚本 — 压缩版 3 步启动 + full-autonomous 桥接
+- [opencode-self-evolution](opencode-self-evolution.md) — 自我改进/持久化记忆/自动复盘/错误模式库
+- [opencode-session-mgmt](opencode-session-mgmt.md) — 会话管理/冲突消解/健康检查规则
+- [opencode-skill-catalog](opencode-skill-catalog.md) — 技能全景清单 — 所有 80 个技能的名称/触发词/分类（含新增 task-executor + compliance-guard）
+- [opencode-subagent-proto](opencode-subagent-proto.md) — 子代理并行执行协议 — 何时派发/派发模式/结果聚合
+- [opencode-tool-reference](opencode-tool-reference.md) — OpenCode→Reasonix 工具映射表 — Read→read_file, Bash→run_command, Task→explore/task-executor, Question→ask_choice
+- [opencode-unattended-mode](opencode-unattended-mode.md) — 无人值守模式 — 自动执行/失败换策略/不跳过任何子任务

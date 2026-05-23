@@ -1,0 +1,12 @@
+{
+  "_generated_at": "2026-05-24T12:00:00",
+  "_schema": {
+    "skill_name": "权重惩罚值 (0.0=无惩罚, 1.0=完全排除)",
+    "thresholds": {
+      "0.7-0.8": "penalty=0.1",
+      "0.8-0.9": "penalty=0.2",
+      "0.9-1.0": "penalty=0.3"
+    }
+  },
+  "weights": {}
+}

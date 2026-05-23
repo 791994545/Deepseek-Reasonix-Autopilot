@@ -1,0 +1,10 @@
+{
+  "task_id": "T-001",
+  "type": "api|feature|bugfix|refactor|test",
+  "scope": "module_name",
+  "complexity": "low|medium|high",
+  "dependencies": ["T-000"],
+  "expected_output": "description of deliverable",
+  "needs_db": false,
+  "needs_auth": false
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-05-21T03:00:00",
+    "error": "explore() used for bulk file scanning (80 files)",
+    "context": "full-autonomous Phase 3: batch task should use run_command+Python",
+    "fix": "If task involves >3 files for analysis → use run_command+Python, not explore()",
+    "confidence": 0.9,
+    "skill_id": "full-autonomous",
+    "phase": 3
+  },
+  {
+    "timestamp": "2026-05-23T03:00:00",
+    "error": "Skipped MANDATORY script steps without justification",
+    "context": "Model loaded full-autonomous but did not follow MANDATORY_EXECUTION_SCRIPT",
+    "fix": "Each step must output [√] or [√] ⏭️ with reason. No justification = violation.",
+    "confidence": 0.8,
+    "skill_id": "full-autonomous",
+    "phase": 0
+  }
+]

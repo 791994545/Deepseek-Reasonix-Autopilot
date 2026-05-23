@@ -13,19 +13,34 @@
 | **backend-api** | 后端/API/服务/接口/MCP | mcp-builder, security-best-practices, improve-codebase-architecture, using-git-worktrees, finishing-a-development-branch | redis-development, tdd, ralph-planner, ralph-loop, ralph, gitnexus-auto | gitnexus-impact-analysis, gitnexus-refactoring | webapp-testing, diagnose |
 | **cli-tool** | 命令行/CLI/脚本/tool | tdd, writing-plans, using-git-worktrees, finishing-a-development-branch | improve-codebase-architecture, gitnexus-exploring, ralph-planner, ralph-loop, ralph, gitnexus-auto | diagnose, full-autonomous | tdd, diagnose |
 | **data-processing** | 数据/Excel/CSV/报表 | xlsx, pdf, markdown-convert | docx, internal-comms | doc-coauthoring, research-documentation | diagnose |
-| **mobile-app** | 移动端/React Native | react-native-skills, tdd | frontend-design | composition-patterns | midscene-test |
-| **browser-auto** | 浏览器/爬虫/自动化 | agent-tars, screenshot | electron, midscene-test | — | midscene-test |
-| **desktop-app** | 桌面/Electron | electron, screenshot | tdd, diagnose | — | — |
-| **git-operation** | Git/PR/Issue/推送 | git-commit, github, github-ops | gitnexus-auto, finishing-a-development-branch | using-git-worktrees | — |
-| **code-quality** | QA/测试/代码质量 | qa-expert, tdd | dogfood, diagnose | webapp-testing | midscene-test |
-| **deep-research** | 深度研究/竞品分析 | deep-research, fact-checker | competitors-analysis, product-analysis | financial-data-collector | — |
-| **skill-creation** | 技能创建/验证 | skill-creator | write-a-skill | — | — |
-| **documentation** | 文档/Wiki/API文档 | doc-coauthoring, api-docs-generator, obsidian-markdown, internal-comms | json-canvas, knowledge-capture | — | — |
-| **presentation** | 演示/PPT/幻灯片 | slides, pptx, theme-factory | brand-guidelines | doc-coauthoring | — |
-| **analysis** | 分析/评估/审查 | self-improving, zoom-out | diagnose, brainstorming | grill-me, writing-plans | diagnose |
-| **testing** | 测试/QA/E2E | tdd, midscene-test, webapp-testing | dogfood, diagnose | self-improving | — |
-| **design-system** | 设计系统/组件库 | shadcn, composition-patterns, brand-guidelines | theme-factory, figma | react-best-practices | webapp-testing |
-| **other** | 其他/未分类 | self-improving, zoom-out, ralph-loop, ralph, gitnexus-auto | diagnose, brainstorming | — | — |
+| **mobile-app** | 移动端/React Native/手机 | react-native-skills, tdd | frontend-design, web-design-guidelines | composition-patterns, improve-codebase-architecture | webapp-testing, midscene-test |
+| **browser-auto** | 浏览器/爬虫/自动化/抓取 | agent-tars, screenshot | electron, midscene-test | diagnose, memory-manager | midscene-test |
+| **desktop-app** | 桌面/Electron/原生 | electron, agent-tars, screenshot | tdd, diagnose | memory-manager, self-improving | webapp-testing |
+| **git-operation** | Git/提交/PR/Issue/推送 | git-commit, github, github-ops | gitnexus-auto, finishing-a-development-branch, github-contributor | using-git-worktrees | — |
+| **code-packaging** | 打包代码/安全扫描/分发包 | repomix-safe-mixer | repomix-unmixer | — | — |
+| **code-quality** | QA/测试/代码质量 | qa-expert | tdd, dogfood | webapp-testing | midscene-test |
+| **deep-research** | 深度研究/竞品分析/市场调研 | deep-research, fact-checker | competitors-analysis, product-analysis | financial-data-collector | — |
+| **skill-creation** | 技能创建/验证/打包 | skill-creator, skills-search | write-a-skill | — | skill-reviewer |
+| **prompt** | Prompt 优化/评估 | prompt-optimizer | promptfoo-evaluation | — | — |
+| **media** | 视频/音频/截图/图标 | youtube-downloader, video-comparer, twitter-reader | cli-demo-generator, llm-icon-finder, capture-screen | — | — |
+| **i18n** | 国际化/本地化 | i18n-expert | — | — | — |
+| **transcript** | 语音转录/字幕修正 | transcript-fixer | — | — | — |
+| **network-debug** | 网络诊断/Cloudflare/SSH | debugging-network-issues, cloudflare-troubleshooting, tunnel-doctor | — | — | — |
+| **data-collection** | 数据采集/爬虫/金融 | scrapling-skill, financial-data-collector, douban-skill | feishu-doc-scraper | — | — |
+| **product-analysis** | 竞品分析/产品调研 | competitors-analysis, product-analysis | — | — | — |
+| **excel** | Excel 操作/自动化 | excel-automation | — | — | — |
+| **macos** | macOS 系统工具 | macos-cleaner | — | capture-screen | — |
+| **china-tools** | 中国区特有工具 | gangtise-copilot, ima-copilot | daymade-docs | — | — |
+| **github-contrib** | GitHub 贡献策略 | github-contributor | — | — | — |
+| **repomix** | Repomix 解包/分析 | repomix-unmixer | repomix-safe-mixer | — | — |
+| **documentation** | 文档/知识库/Wiki/说明/API文档生成 | doc-coauthoring, api-docs-generator, obsidian-markdown, internal-comms | json-canvas, obsidian-bases, knowledge-capture | research-documentation, meeting-intelligence | — |
+| **design-system** | 设计系统/组件库/shadcn | shadcn, composition-patterns, brand-guidelines | theme-factory, figma, web-artifacts-builder | react-best-practices, web-design-guidelines | webapp-testing |
+| **algorithmic-art** | 算法艺术/生成艺术/p5.js | algorithmic-art, prototype | frontend-design, theme-factory | — | — |
+| **config-tool** | 配置/技能/插件/MCP | write-a-skill, find-skills, customize-reasonix | skill-router, self-improving | memory-manager, handoff | — |
+| **testing** | 测试/QA/E2E/单元测试 | tdd, midscene-test, webapp-testing | dogfood, diagnose, full-autonomous | self-improving, memory-hygiene | — |
+| **presentation** | 演示/PPT/幻灯片 | slides, pptx, theme-factory | brand-guidelines, internal-comms | doc-coauthoring | — |
+| **analysis** | 分析/评估/审查/对比/diff/状态 | self-improving, zoom-out | diagnose, brainstorming | grill-me, writing-plans | diagnose |
+| **other** | 其他/未分类 | self-improving, zoom-out, using-git-worktrees, finishing-a-development-branch, ralph-planner, ralph-loop, ralph, gitnexus-auto | diagnose, brainstorming | grill-me, writing-plans | diagnose |
 
 ## 子代理类型选择
 

@@ -17,7 +17,8 @@
   "projects": {
     "C:\\Users\\Administrator": {
       "shellAllowed": [
-        "git -C"
+        "git -C",
+        "python -c"
       ]
     }
   }

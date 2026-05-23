@@ -16,6 +16,7 @@
 | **mobile-app** | 移动端/React Native/手机 | react-native-skills, tdd | frontend-design, web-design-guidelines | composition-patterns, improve-codebase-architecture | webapp-testing, midscene-test |
 | **browser-auto** | 浏览器/爬虫/自动化/抓取 | agent-tars, screenshot | electron, midscene-test | diagnose, memory-manager | midscene-test |
 | **desktop-app** | 桌面/Electron/原生 | electron, agent-tars, screenshot | tdd, diagnose | memory-manager, self-improving | webapp-testing |
+| **git-operation** | Git/提交/PR/Issue/推送 | git-commit, github | gitnexus-auto, finishing-a-development-branch | using-git-worktrees | — |
 | **documentation** | 文档/知识库/Wiki/说明 | doc-coauthoring, obsidian-markdown, internal-comms | json-canvas, obsidian-bases, knowledge-capture | research-documentation, meeting-intelligence | — |
 | **design-system** | 设计系统/组件库/shadcn | shadcn, composition-patterns, brand-guidelines | theme-factory, figma, web-artifacts-builder | react-best-practices, web-design-guidelines | webapp-testing |
 | **algorithmic-art** | 算法艺术/生成艺术/p5.js | algorithmic-art, prototype | frontend-design, theme-factory | — | — |

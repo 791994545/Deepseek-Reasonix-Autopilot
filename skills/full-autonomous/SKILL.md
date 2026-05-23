@@ -93,7 +93,8 @@ version: 3.2.0
 - [√] STEP 3.3: Level 0 并行派发 → Standard/Full 路径默认启用 `ralph-loop` 模式（红-绿-重构循环）；Quick 路径单次执行 → [√] 模式: {ralph-loop|单次}
 - [√] STEP 3.4: 聚合结果 → 下一层依赖
 - [√] STEP 3.5: 子任务重试 → 连续失败时加载 `ralph` 做计划→执行→检查→重试循环（最多 3 种不同策略后标记阻塞）→ [√]
-- [√] STEP 3.6: 自检 rules/04-self-check.md
+- [√] STEP 3.6: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
+- [√] STEP 3.7: 自检 rules/04-self-check.md
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 3 PASSED ===
 

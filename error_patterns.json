@@ -16,5 +16,12 @@
     "confidence": 0.8,
     "skill_id": "full-autonomous",
     "phase": 0
+  },
+  {
+    "error": "分析外部技能时只读头部就下结论（如 doc-reader 实际 8.5KB 读到 1500 字就说 233 字）",
+    "confidence": 0.85,
+    "skill_id": "full-autonomous",
+    "fix": "评估任何文件前：1) 先 get_file_info 看大小 2) 小文件直接读完 3) 大文件至少读 head+tail+range 三段",
+    "prevention": "get_file_info 判断文件大小后再决定读取策略，不默认截断"
   }
 ]

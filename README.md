@@ -1,6 +1,6 @@
-# Reasonix Autopilot — 全自动自进化开发系统
+# Deepseek-Reasonix Autopilot v1.0 — 全自动自进化开发系统
 
-> **83 skills · AI-driven watchdog · Adaptive pipeline · Self-evolving feedback loop**
+> **113 skills · AI-driven watchdog · Adaptive pipeline · Self-evolving feedback loop**
 >
 > 不只是配置集，而是一个**会自我进化的 AI 开发助理系统**。
 
@@ -8,7 +8,7 @@
 
 ## 📋 Overview · 概览
 
-**Reasonix Autopilot** is a full-lifecycle autonomous development system built on top of the Reasonix platform. It transforms how AI assistants work — from single-shot question answering to **multi-phase, self-correcting, self-improving development pipelines**.
+**Deepseek-Reasonix Autopilot v1.0** is a full-lifecycle autonomous development system built on top of the Reasonix platform. It transforms how AI assistants work — from single-shot question answering to **multi-phase, self-correcting, self-improving development pipelines**.
 
 本系统不是简单的配置集合，而是一套完整的** AI 开发方法论**：从任务评估、技能路由、执行编排、多策略重试、合规审计，到复盘学习、权重回调，构成了一个完整的**自进化闭环**。
 
@@ -44,16 +44,16 @@ cat requirements.txt
 
 ## 📋 Overview · 概览
 
-**Reasonix Autopilot** is a full-lifecycle autonomous development system built on top of the Reasonix platform. It transforms how AI assistants work — from single-shot question answering to **multi-phase, self-correcting, self-improving development pipelines**.
+**Deepseek-Reasonix Autopilot v1.0** is a full-lifecycle autonomous development system built on top of the Reasonix platform. It transforms how AI assistants work — from single-shot question answering to **multi-phase, self-correcting, self-improving development pipelines**.
 
 本系统不是简单的配置集合，而是一套完整的** AI 开发方法论**：从任务评估、技能路由、执行编排、多策略重试、合规审计，到复盘学习、权重回调，构成了一个完整的**自进化闭环**。
 
-> **技能发现**：不维护硬编码技能列表。所有 83 个技能由 skill-router 在 Phase 0 动态扫描 `~/.reasonix/skills/` 自动发现加载。新增技能只需放入目录即可，无需修改任何配置文件。
+> **技能发现**：不维护硬编码技能列表。所有 113 个技能由 skill-router 在 Phase 0 动态扫描 `~/.reasonix/skills/` 自动发现加载。新增技能只需放入目录即可，无需修改任何配置文件。
 
 ## 🗂 Architecture · 架构
 
 ```
-Reasonix Autopilot
+Deepseek-Reasonix Autopilot v1.0
 │
 ├── AGENTS.md              ← 全局行为准则 + 启动脚本（中枢神经）
 ├── config.json            ← 平台配置（API Key 由环境变量注入）
@@ -138,7 +138,7 @@ Every mistake makes the system smarter. Every review feeds back into routing wei
 
 | Test · 测试项 | Result · 结果 | Detail · 详情 |
 |---------------|--------------|---------------|
-| Skill discovery · 技能发现 | ✅ 10/10 | 83/83 skills, all with SKILL.md |
+| Skill discovery · 技能发现 | ✅ 10/10 | 83/113 skills, all with SKILL.md |
 | API Key env var · 安全 | ✅ | `\${DEEPSEEK_API_KEY}` only, no plaintext |
 | Watchdog · 看门狗 | ✅ 7/7 | graceful stop, state init, PID cleanup, log rotation, perf verification |
 | Error pattern linkage · 错误关联 | ✅ | All entries have `skill_id` |

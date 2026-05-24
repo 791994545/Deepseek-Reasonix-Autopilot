@@ -91,7 +91,7 @@ version: 3.4.0
 🟡 **批量编辑** → `multi_edit`（所有编辑验证通过后才写磁盘，失败则全部回滚），禁止串行 `edit_file`
 **子代理类型**: explore(只读) / task-executor(写操作) / task-executor + ralph-loop(复杂多步骤)
 </HARD-GATE-TOOL>
-- [√] **STEP 3.0: 错误模式预检** — 在编码/测试前先加载 `error_patterns.json`，匹配当前场景的已知错误模式 → 有则输出 `[ErrorPattern] {已知模式} → apply prevention` 并遵循 prevention 策略 → [√] {匹配 N 条/无匹配}
+- [√] **STEP 3.0: 🔴 错误模式预检 + 强制修正** — 加载 `error_patterns.json`，匹配当前场景的已知错误模式 → 有则**必须执行每条匹配 error 的 `prevention` 字段**（不执行 = 违例），执行后输出 `[ErrorPattern] {模式}: prevention 已应用 → {具体动作}` → [√] {匹配 N 条/已执行/无匹配}
 - [√] STEP 3.1: 拆分依赖图 + Level 0 并行派发
 - [√] STEP 3.2: **代码修改类子任务前置** — 调用 `gitnexus-auto` 做索引→上下文→影响分析→改代码→变化检测全流程 → [√] 影响级别: {LOW/MEDIUM/HIGH}
 - [√] STEP 3.3: Level 0 并行派发 → Standard/Full 路径默认启用 `ralph-loop` 模式（红-绿-重构循环）；Quick 路径单次执行 → [√] 模式: {ralph-loop|单次}
@@ -99,7 +99,7 @@ version: 3.4.0
 - [√] STEP 3.5: 子任务重试 → 连续失败时加载 `ralph` 做计划→执行→检查→重试循环（最多 3 种不同策略后标记阻塞）→ [√]
 - [√] STEP 3.6: 更新 `state.json` 记录当前 phase/step → `write_file state.json {\"phase\":3,\"step\":3.6,\"startedAt\":\"{ISO时间}\"}`
 - [√] **STEP 3.6a: 🔴 修复闭环 — 强制记录新错误模式** — 本次执行中发现的任何新 Bug/错误，追加到 `error_patterns.json`（含 `skill_id`/`phase`/`confidence`/`fix`/`prevention`），然后更新 `routing_weights.json`（按 confidence 设 penalty）→ 追加前检查是否已有同类模式 → 有则合并（提升 confidence），无则新增 → [√] {新增 N 条/合并 N 条/无新错误}
-- [√] STEP 3.7: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
+- [√] STEP 3.7: 🔴 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则**必须执行 `fix` 字段**（不执行 = 违例），输出 `[ErrorPattern] {已知模式}: fix 已执行 → {具体动作}`
 - [√] STEP 3.8: 自检 rules/04-self-check.md
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 3 合规性 → [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
@@ -107,7 +107,7 @@ version: 3.4.0
 === Phase 3 PASSED ===
 
 ## Phase 4: 验证 — 每步独立 [√]
-- [√] **STEP 4.0: 错误模式预检 + 平台检测** — 加载 `error_patterns.json` 匹配当前测试场景 + 检测 OS 平台（Windows/Linux/macOS）→ Windows 时自动防御：① subprocess 不用 text=True ② Flask 验证用 test_client ③ 文件路径用 os.path.join ④ 编码用 utf-8 errors=replace → [√] 平台: {Windows|Linux|macOS} 防御: {N 条}
+- [√] **STEP 4.0: 🔴 错误模式预检 + 平台检测 + 强制防御** — 加载 `error_patterns.json` 匹配当前测试场景 → **必须执行匹配的 `prevention` 字段**（不执行 = 违例）。同时检测 OS 平台（Windows/Linux/macOS）→ Windows 时**自动应用以下防御**（全部执行）：① subprocess 不用 text=True ② Flask 验证用 test_client ③ 文件路径用 os.path.join ④ 编码用 utf-8 errors=replace → [√] 平台: {Windows|Linux|macOS} 防御: {N 条} 错误模式: {N 条已执行}
 - [√] **STEP 4.0.5: 测试 import 路径自检** — Python 项目若有 `tests/` 子目录且执行 pytest 时报 import 错误 → 检查 conftest.py 是否有 sys.path.insert；若测试文件 import 项目模块失败，自动生成 conftest.py 补 sys.path → [√] {正常/已修复}
 - [√] STEP 4.1: 运行测试 → N/M（或分析类任务的质量自检）
 - [√] STEP 4.2: 失败 → diagnose → 修复 → 重跑

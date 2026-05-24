@@ -1,0 +1,72 @@
+{
+  "description": "H-3 隐性需求规则库 — Phase 2 设计阶段扫描常见遗漏需求",
+  "version": "1.0.0",
+  "last_updated": "2026-05-24",
+  "rules": {
+    "web-frontend": [
+      {"pattern": "loading|empty|error", "question": "是否有 loading/empty/error 三态处理？", "category": "ux"},
+      {"pattern": "responsive|mobile", "question": "是否有移动端响应式布局？", "category": "ux"},
+      {"pattern": "seo|meta|title", "question": "是否有 SEO 基础（title/meta/og）？", "category": "seo"},
+      {"pattern": "404|not found", "question": "是否有 404 页面？", "category": "ux"},
+      {"pattern": "input.*valid|form.*valid", "question": "是否有前端表单验证？", "category": "security"},
+      {"pattern": "accessibility|a11y", "question": "是否有无障碍（aria/焦点管理）？", "category": "ux"},
+      {"pattern": "error.*boundary", "question": "是否有 React Error Boundary？", "category": "ux"},
+      {"pattern": "loading.*skeleton", "question": "是否有骨架屏 / loading 态？", "category": "ux"}
+    ],
+    "web-fullstack": [
+      {"pattern": "auth|login|session", "question": "是否有认证与会话管理？", "category": "security"},
+      {"pattern": "cors", "question": "是否有 CORS 配置？", "category": "security"},
+      {"pattern": "rate.*limit", "question": "是否有 API rate limiting？", "category": "security"},
+      {"pattern": "error.*format", "question": "是否有统一错误响应格式？", "category": "api"},
+      {"pattern": "health.*check", "question": "是否有健康检查端点？", "category": "ops"},
+      {"pattern": "log.*request", "question": "是否有请求日志记录？", "category": "ops"},
+      {"pattern": "env.*config", "question": "是否有环境变量配置管理？", "category": "devops"}
+    ],
+    "backend-api": [
+      {"pattern": "input.*valid|param.*valid", "question": "是否有请求参数校验？", "category": "security"},
+      {"pattern": "error.*format|error.*response", "question": "是否有统一的错误响应格式？", "category": "api"},
+      {"pattern": "rate.*limit|throttle", "question": "是否有 rate limiting？", "category": "security"},
+      {"pattern": "health.*check", "question": "是否有健康检查端点？", "category": "ops"},
+      {"pattern": "log.*request|audit.*log", "question": "是否有请求审计日志？", "category": "ops"},
+      {"pattern": "auth.*token|jwt|session", "question": "是否有接口鉴权？", "category": "security"},
+      {"pattern": "cors", "question": "是否有 CORS 配置？", "category": "security"},
+      {"pattern": "pagination|offset|cursor", "question": "是否有分页支持？", "category": "api"},
+      {"pattern": "version.*api|api.*version", "question": "是否有 API 版本管理？", "category": "api"}
+    ],
+    "cli-tool": [
+      {"pattern": "help|--help|-h", "question": "是否有 --help 输出？", "category": "ux"},
+      {"pattern": "exit.*code", "question": "是否有正确的退出码（0/非0）？", "category": "ux"},
+      {"pattern": "error.*message", "question": "是否有友好的错误提示？", "category": "ux"},
+      {"pattern": "config.*file|config.*path", "question": "是否有配置文件支持？", "category": "ux"},
+      {"pattern": "progress|verbose", "question": "是否有进度/verbose 模式？", "category": "ux"}
+    ],
+    "data-processing": [
+      {"pattern": "null|empty|nan|none", "question": "是否有空值/异常值处理？", "category": "robustness"},
+      {"pattern": "large.*file|chunk", "question": "是否有大文件分块处理？", "category": "performance"},
+      {"pattern": "encoding|utf-8|gbk", "question": "是否有编码处理（UTF-8 vs GBK）？", "category": "robustness"},
+      {"pattern": "timeout|retry", "question": "是否有超时和重试机制？", "category": "robustness"},
+      {"pattern": "progress.*bar|progress.*percent", "question": "是否有进度反馈？", "category": "ux"}
+    ],
+    "mobile-app": [
+      {"pattern": "loading|empty|error", "question": "是否有 loading/empty/error 三态？", "category": "ux"},
+      {"pattern": "pull.*refresh", "question": "是否有下拉刷新？", "category": "ux"},
+      {"pattern": "offline|cache", "question": "是否有离线缓存策略？", "category": "ux"},
+      {"pattern": "permission|location|camera", "question": "是否有权限申请处理？", "category": "security"},
+      {"pattern": "deep.*link", "question": "是否有 Deep Link 支持？", "category": "ux"}
+    ],
+    "desktop-app": [
+      {"pattern": "menu|shortcut", "question": "是否有菜单和快捷键？", "category": "ux"},
+      {"pattern": "update|auto.*update", "question": "是否有自动更新机制？", "category": "ops"},
+      {"pattern": "error.*report|crash.*report", "question": "是否有崩溃报告？", "category": "ops"},
+      {"pattern": "config|setting|preference", "question": "是否有设置界面？", "category": "ux"}
+    ],
+    "documentation": [
+      {"pattern": "quick.*start|getting.*started", "question": "是否有快速开始指南？", "category": "docs"},
+      {"pattern": "api.*ref|api.*doc", "question": "是否有 API 参考文档？", "category": "docs"},
+      {"pattern": "example|demo|sample", "question": "是否有示例代码？", "category": "docs"},
+      {"pattern": "troubleshoot|faq|common.*issue", "question": "是否有故障排除/FAQ？", "category": "docs"},
+      {"pattern": "change.*log|changelog", "question": "是否有更新日志？", "category": "docs"}
+    ]
+  },
+  "user_added": []
+}

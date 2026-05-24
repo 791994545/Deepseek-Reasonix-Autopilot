@@ -9,20 +9,15 @@
     }
   },
   "weights": {
-    "sample-skill": {
-      "weight_penalty": 0.3,
-      "last_error": "手动通过 Dashboard 调整",
-      "last_error_time": "2026-05-24T09:09:22"
-    },
     "toggle-skill": {
       "weight_penalty": 0.0,
       "last_error": "手动通过 Dashboard 调整",
       "last_error_time": "2026-05-24T09:09:22"
     },
-    "test-skill": {
-      "weight_penalty": 0.2,
-      "last_error": "手动通过 Dashboard 调整",
-      "last_error_time": "2026-05-24T09:09:23"
+    "watchdog.py": {
+      "weight_penalty": 0.0,
+      "last_error": "GBK print UnicodeEncodeError — 已修复 (TextIOWrapper)",
+      "last_error_time": "2026-05-24T19:58:30"
     }
   },
   "_overrides": {

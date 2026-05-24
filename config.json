@@ -20,7 +20,8 @@
         "git -C",
         "python -c",
         "git clone",
-        "python C:\\Users\\Administrator\\.reasonix\\scripts\\watchdog.py"
+        "python C:\\Users\\Administrator\\.reasonix\\scripts\\watchdog.py",
+        "gh"
       ]
     },
     "D:\\AIproject\\opencode vs reasonix\\reasonix": {
@@ -38,6 +39,39 @@
         "C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous",
         "C:\\Users\\Administrator\\.reasonix"
       ]
+    },
+    "C:\\Windows\\system32": {
+      "shellAllowed": [
+        "ls",
+        "echo",
+        "dir",
+        "type",
+        "powershell",
+        "python \"C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\scripts\\watchdog.py\"",
+        "python -c",
+        "mkdir",
+        "python D:/demo/treemd.py",
+        "python \"C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\scripts\\compact_memories.py\"",
+        "python \"C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\scripts\\run_pipeline.py\"",
+        "python \"D:\\demo\\hello.py\"",
+        "python \"D:\\demo\\hello2.py\""
+      ],
+      "pathAllowed": [
+        "C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\docs",
+        "C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous",
+        "C:\\Users\\Administrator\\.reasonix",
+        "D:\\demo"
+      ]
     }
-  }
+  },
+  "recentWorkspaces": [
+    "C:\\Windows\\system32"
+  ],
+  "desktopOpenTabs": [
+    {
+      "dir": "C:\\Windows\\system32",
+      "session": "desktop-202605241144-1",
+      "active": true
+    }
+  ]
 }

@@ -1,14 +1,5 @@
 [
   {
-    "timestamp": "2026-05-21T03:00:00",
-    "error": "explore() used for bulk file scanning (80 files)",
-    "context": "full-autonomous Phase 3: batch task should use run_command+Python",
-    "fix": "If task involves >3 files for analysis → use run_command+Python, not explore()",
-    "confidence": 0.9,
-    "skill_id": "full-autonomous",
-    "phase": 3
-  },
-  {
     "error": "memory/global/ 存过期 OpenCode 文件 — opencode-skill-catalog 写 80 个技能，实际 113",
     "confidence": 0.9,
     "skill_id": "self-improving",
@@ -20,6 +11,15 @@
     "context": "全自动 Phase 3: _extract_description 在遇到第一个 --- 时就 break，未进入 frontmatter",
     "fix": "写状态机：跳过首行 --- → 读 frontmatter → 遇到第二个 --- 退出",
     "prevention": "写 YAML/TOML/JSON 解析器后始终用真实文件验证，边缘 case 至少 3 个",
+    "confidence": 0.9,
+    "skill_id": "full-autonomous",
+    "phase": 3
+  },
+  {
+    "timestamp": "2026-05-21T03:00:00",
+    "error": "explore() used for bulk file scanning (80 files)",
+    "context": "full-autonomous Phase 3: batch task should use run_command+Python",
+    "fix": "If task involves >3 files for analysis → use run_command+Python, not explore()",
     "confidence": 0.9,
     "skill_id": "full-autonomous",
     "phase": 3
@@ -57,13 +57,14 @@
     "phase": 4
   },
   {
-    "timestamp": "2026-05-23T03:00:00",
-    "error": "Skipped MANDATORY script steps without justification",
-    "context": "Model loaded full-autonomous but did not follow MANDATORY_EXECUTION_SCRIPT",
-    "fix": "Each step must output [√] or [√] ⏭️ with reason. No justification = violation.",
-    "confidence": 0.8,
+    "timestamp": "2026-05-24T19:58:30",
+    "error": "print() Unicode 字符在 Windows GBK 终端报 UnicodeEncodeError",
+    "context": "watchdog.py 使用 ℹ️✅ 等 Unicode 字符，Windows cmd.exe GBK 编码无法输出",
+    "fix": "脚本开头加: sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=\"utf-8\", errors=\"replace\")",
+    "prevention": "所有 Python 脚本在 Windows 上输出前加 TextIOWrapper utf-8 重定向",
+    "confidence": 0.85,
     "skill_id": "full-autonomous",
-    "phase": 0
+    "phase": 1
   },
   {
     "error": "Flask debug=True + run_background 在 Windows 上路由全 404",
@@ -73,6 +74,15 @@
     "confidence": 0.8,
     "skill_id": "full-autonomous",
     "phase": 4
+  },
+  {
+    "timestamp": "2026-05-23T03:00:00",
+    "error": "Skipped MANDATORY script steps without justification",
+    "context": "Model loaded full-autonomous but did not follow MANDATORY_EXECUTION_SCRIPT",
+    "fix": "Each step must output [√] or [√] ⏭️ with reason. No justification = violation.",
+    "confidence": 0.8,
+    "skill_id": "full-autonomous",
+    "phase": 0
   },
   {
     "error": "硬流程步骤与动态路由混用 — tdd/dogfood 被写死在 Phase 流程而不是走 skill-router 发现",

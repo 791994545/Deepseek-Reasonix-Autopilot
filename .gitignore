@@ -25,5 +25,8 @@ __pycache__/
 # Git
 .git/
 
+# 备份
+_backup_*/
+
 # 系统生成
 version-cache.json

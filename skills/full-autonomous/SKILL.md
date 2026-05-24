@@ -52,7 +52,21 @@ Phase 0: 评估 → Phase 1: 调查 → Phase 2: 设计 → Phase 3: 编码 → 
 ## Phase 2 — 设计
 
 **Standard (2a)**: 简单规划 → 直接编码
-**Full (2b)**: 审计驱动（`explore` 扫描 → 设计 → 审查 → 编码）
+**Full (2b)**: 按 task_type 路由策略：
+
+| task_type | 策略 |
+|-----------|------|
+| `code-build` `feature` `refactor` | 设计驱动 → 规划 → 编码 |
+| `code-audit` `analysis` | `explore` 并行扫描 → 直接编码 |
+| `bug-fix` | `diagnose` → 定位 → 修复 |
+
+---
+
+## 关键操作规则
+
+- **读后写** — 编辑前必须 `read_file`（平台已强制）
+- **多文件改动用 `multi_edit`** — 批量验证，失败全回滚
+- **不静默失败** — 错误必须记录，不藏 try/catch
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "_generated_at": "2026-05-24T12:00:00",
+  "_generated_at": "2026-05-24T09:09:23",
   "_schema": {
     "skill_name": "权重惩罚值 (0.0=无惩罚, 1.0=完全排除)",
     "thresholds": {
@@ -13,6 +13,54 @@
       "weight_penalty": 0.1,
       "last_error": "不完整读取导致误判",
       "last_error_time": "2026-05-24T12:00:00"
+    },
+    "sample-skill": {
+      "weight_penalty": 0.3,
+      "last_error": "手动通过 Dashboard 调整",
+      "last_error_time": "2026-05-24T09:09:22"
+    },
+    "toggle-skill": {
+      "weight_penalty": 0.0,
+      "last_error": "手动通过 Dashboard 调整",
+      "last_error_time": "2026-05-24T09:09:22"
+    },
+    "test-skill": {
+      "weight_penalty": 0.2,
+      "last_error": "手动通过 Dashboard 调整",
+      "last_error_time": "2026-05-24T09:09:23"
+    }
+  },
+  "_overrides": {
+    "test/core": {
+      "skills": [
+        "skill-a"
+      ],
+      "updated_at": "2026-05-24T09:09:23"
+    },
+    "**web-frontend**/core,enhanced,extended,testing": {
+      "skills": {
+        "core": [
+          "frontend-design",
+          "web-dev"
+        ],
+        "enhanced": [
+          "shadcn",
+          "composition-patterns",
+          "theme-factory",
+          "brand-guidelines"
+        ],
+        "extended": [
+          "figma",
+          "web-artifacts-builder",
+          "frontend-skill"
+        ],
+        "testing": [
+          "webapp-testing",
+          "web-design-guidelines",
+          "midscene-test"
+        ]
+      },
+      "updated_at": "2026-05-24T08:47:48"
     }
   }
 }

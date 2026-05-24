@@ -91,12 +91,14 @@ version: 3.4.0
 🟡 **批量编辑** → `multi_edit`（所有编辑验证通过后才写磁盘，失败则全部回滚），禁止串行 `edit_file`
 **子代理类型**: explore(只读) / task-executor(写操作) / task-executor + ralph-loop(复杂多步骤)
 </HARD-GATE-TOOL>
+- [√] **STEP 3.0: 错误模式预检** — 在编码/测试前先加载 `error_patterns.json`，匹配当前场景的已知错误模式 → 有则输出 `[ErrorPattern] {已知模式} → apply prevention` 并遵循 prevention 策略 → [√] {匹配 N 条/无匹配}
 - [√] STEP 3.1: 拆分依赖图 + Level 0 并行派发
 - [√] STEP 3.2: **代码修改类子任务前置** — 调用 `gitnexus-auto` 做索引→上下文→影响分析→改代码→变化检测全流程 → [√] 影响级别: {LOW/MEDIUM/HIGH}
 - [√] STEP 3.3: Level 0 并行派发 → Standard/Full 路径默认启用 `ralph-loop` 模式（红-绿-重构循环）；Quick 路径单次执行 → [√] 模式: {ralph-loop|单次}
 - [√] STEP 3.4: 聚合结果 → 下一层依赖
 - [√] STEP 3.5: 子任务重试 → 连续失败时加载 `ralph` 做计划→执行→检查→重试循环（最多 3 种不同策略后标记阻塞）→ [√]
 - [√] STEP 3.6: 更新 `state.json` 记录当前 phase/step → `write_file state.json {\"phase\":3,\"step\":3.6,\"startedAt\":\"{ISO时间}\"}`
+- [√] **STEP 3.6a: 🔴 修复闭环 — 强制记录新错误模式** — 本次执行中发现的任何新 Bug/错误，追加到 `error_patterns.json`（含 `skill_id`/`phase`/`confidence`/`fix`/`prevention`），然后更新 `routing_weights.json`（按 confidence 设 penalty）→ 追加前检查是否已有同类模式 → 有则合并（提升 confidence），无则新增 → [√] {新增 N 条/合并 N 条/无新错误}
 - [√] STEP 3.7: 加载 `error_patterns.json` 检查是否有当前场景的已知错误模式 → 有则应用 `fix` 策略 → 输出 `[ErrorPattern] {已知模式}: {apply fix}`
 - [√] STEP 3.8: 自检 rules/04-self-check.md
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 3 合规性 → [√]
@@ -105,8 +107,11 @@ version: 3.4.0
 === Phase 3 PASSED ===
 
 ## Phase 4: 验证 — 每步独立 [√]
+- [√] **STEP 4.0: 错误模式预检 + 平台检测** — 加载 `error_patterns.json` 匹配当前测试场景 + 检测 OS 平台（Windows/Linux/macOS）→ Windows 时自动防御：① subprocess 不用 text=True ② Flask 验证用 test_client ③ 文件路径用 os.path.join ④ 编码用 utf-8 errors=replace → [√] 平台: {Windows|Linux|macOS} 防御: {N 条}
+- [√] **STEP 4.0.5: 测试 import 路径自检** — Python 项目若有 `tests/` 子目录且执行 pytest 时报 import 错误 → 检查 conftest.py 是否有 sys.path.insert；若测试文件 import 项目模块失败，自动生成 conftest.py 补 sys.path → [√] {正常/已修复}
 - [√] STEP 4.1: 运行测试 → N/M（或分析类任务的质量自检）
 - [√] STEP 4.2: 失败 → diagnose → 修复 → 重跑
+- [√] **STEP 4.2.5: 🔴 修复后强制记录到 error_patterns.json** — 任何测试/运行中发现的 Bug，修复完毕后立即追加到 `error_patterns.json`（含 `skill_id`/`phase`/`confidence`/`fix`/`prevention`）+ 更新 `routing_weights.json`（按 confidence 设 penalty）→ 追加前检查是否已有同类 → 有则合并提升 confidence → [√] {新增 N 条/合并 N 条}
 - [√] STEP 4.3: Full 路径 → security-best-practices 最终审查
 - [√/⏭️] STEP 4.4: **应用内测** — 调用路由表 `testing` 行匹配技能（如 dogfood/webapp-testing/midscene-test）→ [√] {已测试/N 技能/不适用}
 - [√] **合规出口** — 调用 `compliance-check` 验证 Phase 4 合规性 → [√]
@@ -121,38 +126,58 @@ version: 3.4.0
 **格式自检** → ✅
 === Phase 4.5 PASSED ===
 
-## Phase 5: 交付 — 每步独立 [√]
-- [√/⏭️] STEP 5.1: git-commit（如适用）
-- [√] STEP 5.2: 停看门狗：`stop_job(watchdog_job_id)`
-- [√/⏭️] STEP 5.3: **主动归档** — 若任务未完成或后续需续做 → 调用 `handoff` 生成交接文档 → [√] {已生成/无需交接}
-- [√/⏭️] STEP 5.4: **交付报告** — 默认标准格式；若 Phase 0 检测到 silent 模式则输出精简版 → [√]
-- [√/⏭️] STEP 5.5: **memory 清理** — 调用 `memory-manager` 做 session 结束清理 → [√]
-- [√/⏭️] STEP 5.6: **记忆优化** — 若 LanceDB 向量记忆臃肿 → 调用 `memory-hygiene` 做审计清理（Clawdbot 专用）→ [√/⏭️]
-- [√] **STEP 5.7: 强制复盘 + 经验写入**（🔴 必须写，跳过记 2 次违例）
-  a) 追加复盘记录到 `skill_performance.json` — **必须使用 `write_file` 物理写入**，格式：
-    ```json
-    {
-      "timestamp": "{ISO时间}",
-      "skill": "full-autonomous",
-      "action": "{任务描述}",
-      "assessment": "success|partial|failure",
-      "reason": "{一句话评价}",
-      "next_time": "{下次改进}",
-      "duration_seconds": {N},
-      "phases_completed": [0,1,2,3,4,5],
-      "violations_count": {N},
-      "skills_used": ["{skill1}"],
-      "skills_skipped": ["{skill3}"]
-    }
-    ```
-  b) 写入经验到 `memory/experiences/` — **必须使用 `write_file` 物理写入**，文件名 `{ISO日期}-{任务摘要}.md`，内容包含：做了什么、遇到什么问题、如何解决的、下次注意什么
-  c) learnings/ 超过 20 条时删除最旧文件
-  d) 🔴 验证写入是否成功：`read_file skill_performance.json` 最后一条应为刚写的记录 → 若未找到，追加违例至 error_patterns.json 并重写
-  → [√] {已写入/N 条}
-- [√] STEP 5.8: **日志轮转** — 检查 usage.jsonl 是否 >512KB → 若是则归档为 `usage-{ISO日期}.jsonl.bak` 并新建空文件；清理 `.jsonl` / `.meta.json` / `checkpoints/`，保留 `.bak` → [√] {正常/已轮转}
-- [√] STEP 5.9: 通知用户
-- [√] **STEP 5.10: 自我改进** — 调用 `self-improving` 做 7 步反思整理（初始化→记录→关联→简化→提升→提取→回顾）→ [√] {pending: N, high-priority: M}
+## Phase 5: 交付 + 自我回顾与进化 — 所有路径通用（Quick 精简版，Standard/Full 完整版）
+
+> 🧠 **核心理念**: 每次执行结束后，系统自动回顾全过程、发现可改进点、更新知识库，确保下一次比这一次更好。
+> **Quick 路径**: 跳过阶段 A/B/E，必须执行阶段 C/D（保底学习）
+> **Standard/Full 路径**: 必须执行全部 A→E
+
+### 阶段 A: 执行过程回顾（Standard/Full）
+- [√] **STEP 5A.1: 扫描执行记录** — 回顾本次任务：完成了什么、卡在哪儿、跳过了哪些步骤 → 输出回顾摘要 → [√] {N 个步骤完成 / M 个问题}
+- [√] **STEP 5A.2: 检查违例** — 回顾是否有无理由跳过的步骤 → 若有则追加到 error_patterns.json（违例格式：`{"error":"无理由跳过 {步骤}","confidence":0.7,"skill_id":"full-autonomous","phase":{N},"fix":"输出 [√] ⏭️ 理由:{一句话}"}`）→ [√] {N 次违例}
+- [√] **STEP 5A.3: 对比预期 vs 实际** — 计划复杂度 vs 实际耗时/步骤数 → 若偏差大则记录到经验（下次评估更准）
+
+### 阶段 B: 错误模式分析（Standard/Full）
+- [√] **STEP 5B.1: 扫描本次遇到的所有问题** — 逐个回溯：bug/报错/crash/异常/不符合预期的行为 → 列出问题清单 → [√] {N 个问题}
+- [√] **STEP 5B.2: 交叉对比 error_patterns.json** — 每个问题查 error_patterns.json：有匹配 → 提升 confidence（取 max）；无匹配 → 追加新记录（含 skill_id/phase/confidence(0.7起)/fix/prevention）→ [√] {命中 N 条 / 新增 N 条}
+- [√] **STEP 5B.3: 更新 routing_weights.json** — 按新错误模式的 confidence 更新对应技能的 weight_penalty（规则同前：0.7→0.1, 0.8→0.2, 0.9→0.3；full-autonomous 自身豁免；同一 skill 取最高）→ [√] {更新 N 条}
+
+### 阶段 C: 经验写入 + 验证（所有路径 🔴 必须）
+- [√] **STEP 5C.1: 追加 skill_performance.json** — `write_file` 写入，格式：
+  ```json
+  {
+    "timestamp": "{ISO时间}",
+    "skill": "full-autonomous",
+    "action": "{任务描述}",
+    "assessment": "success|partial|failure",
+    "reason": "{一句话评价}",
+    "next_time": "{下次改进}",
+    "duration_seconds": {N},
+    "phases_completed": [0,1,2,3,4,5],
+    "violations_count": {N},
+    "errors_found": {N},
+    "errors_recorded": {N},
+    "skills_used": ["{skill1}"],
+    "skills_skipped": ["{skill3}"]
+  }
+  ```
+- [√] **STEP 5C.2: 写入经验到 memory/experiences/** — `write_file` 创建 `{ISO日期}-{任务摘要}.md`，内容包含：做了什么、遇到什么问题、如何修复的、下次如何预防、本次学到了什么可泛化的规则
+- [√] **STEP 5C.3: 🔴 验证写入** — `read_file skill_performance.json` 确认最后一条为刚写记录 → 失败则重写 + 记违例 → [√] {已验证/N 条}
+- [√] **STEP 5C.4: learnings/ 轮转** — 超过 20 条时删除最旧文件
+
+### 阶段 D: 进化建议（Standard/Full）
+- [√] **STEP 5D.1: 输出 1-3 条进化建议** — 格式：`下次{场景}→{新做法}` → [√] {N 条建议}
+- [√] **STEP 5D.2: 若发现问题可泛化为全局规则** → 追加到 AGENTS.md 或通过 `remember` 写全局记忆 → [√] {已更新/无需}
+- [√] **STEP 5D.3: 更新 state.json** — `write_file state.json {"phase":5,"step":"REVIEW_DONE","startedAt":"{ISO时间}"}`
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
+
+### 阶段 E: 系统清理（所有路径）
+- [√] STEP 5E.1: **通知用户** — 交付报告 + 进化建议
+- [√/⏭️] STEP 5E.2: **日志轮转** — 检查 usage.jsonl >512KB → 归档 → [√] {正常/已轮转}
+- [√/⏭️] STEP 5E.3: **memory 清理** — 调用 memory-manager 结束清理 → [√]
+- [√] STEP 5E.4: **停看门狗** — `stop_job(watchdog_job_id)` → [√]
+- [√/⏭️] STEP 5E.5: **主动归档** — 未完成任务 → 调用 handoff 交接文档 → [√] {已生成/无需}
+- [√/⏭️] STEP 5E.6: **git-commit**（如适用）→ [√]
 [State] 删除 state.json
 === Phase 5 PASSED ===
 </MANDATORY_EXECUTION_SCRIPT>

@@ -5,3 +5,5 @@
 - [opencode-subagent-proto](opencode-subagent-proto.md) — 子代理并行执行协议 — 何时派发/派发模式/结果聚合
 - [opencode-tool-reference](opencode-tool-reference.md) — OpenCode→Reasonix 工具映射表 — Read→read_file, Bash→run_command, Task→explore/task-executor, Question→ask_choice
 - [opencode-unattended-mode](opencode-unattended-mode.md) — 无人值守模式 — 自动执行/失败换策略/不跳过任何子任务
+- [platform-defense-rules](platform-defense-rules.md) — Windows/Python/Flask 平台防御规则 — 从 PK 构建 5 个 Bug 中提取
+- [post-execution-self-review](post-execution-self-review.md) — 每次全自动执行后自我回顾与进化 — Phase 5 统一回顾流程 A→E

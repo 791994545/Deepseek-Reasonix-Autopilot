@@ -101,5 +101,29 @@
     "confidence": 0.75,
     "skill_id": "full-autonomous",
     "phase": 4
+  },
+  {
+    "timestamp": "2026-05-25T03:23:42.047847+08:00",
+    "error": "ProtocolViolation (1 items)",
+    "detail": [
+      "最近 5 条消息中无 [Auto] 前缀"
+    ],
+    "severity": "L1",
+    "confidence": 0.7,
+    "skill_id": "full-autonomous",
+    "phase": 0,
+    "fix": "无预设修复，需手动分析",
+    "prevention": "每次遇到新错误模式后追加 fix/prevention"
+  },
+  {
+    "timestamp": "2026-05-25T03:24:12.060921+08:00",
+    "error": "ProtocolViolation (1 items)",
+    "detail": [
+      "最近 5 条消息中无 [Auto] 前缀"
+    ],
+    "severity": "L1",
+    "confidence": 0.7,
+    "skill_id": "full-autonomous",
+    "phase": 0
   }
 ]

@@ -9,11 +9,6 @@
     }
   },
   "weights": {
-    "full-autonomous": {
-      "weight_penalty": 0.1,
-      "last_error": "不完整读取导致误判",
-      "last_error_time": "2026-05-24T12:00:00"
-    },
     "sample-skill": {
       "weight_penalty": 0.3,
       "last_error": "手动通过 Dashboard 调整",

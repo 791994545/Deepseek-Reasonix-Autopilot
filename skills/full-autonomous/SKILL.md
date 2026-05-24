@@ -47,9 +47,33 @@ compact_memories.py      ← complete 时自动调用
 | 2a/2b | 按 task_type 动态路由（见下方策略表） |
 | 3 | 编码（遵守工具规则） + 测试 |
 | 4 | 测试 → diagnose → 修复 |
-| 5 | 自我回顾 + 写 skill_performance + experiences + 进化建议 |
+| 5 | 自我回顾 + 成果展示 + 写记录 + 进化建议 |
 
 ### 任务完成时
+1. 自我回顾（做了什么、遇到什么问题、学到了什么）
+2. 🔴 **成果展示** — 格式见下方
+3. 写 skill_performance.json + experiences
+4. 🔴 强制 compact_memories.py
+5. 停看门狗 + 删 state
+
+### 成果展示格式
+```
+📦 完成
+──────────────────────────────
+任务: {一句话}
+路径: Quick / Standard / Full
+耗时: {N}分{N}秒
+
+产出:
+  📄 {文件1} — {用途}
+  📄 {文件2} — {用途}
+
+结果:
+  {测试/验证结果摘要}
+
+下次提醒:
+  {1条可改进点 或 "无"}
+```
 自动调用 `run_pipeline.py complete`
 
 ## 路径

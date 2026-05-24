@@ -37,12 +37,14 @@
 具体每个 Phase 做什么见 `SKILL.md`。
 
 ## 任务完成时（🔴 强制全部执行）
-1. 追加 `skill_performance.json`（本次执行数据）
-2. 写 `memory/experiences/{日期}-{摘要}.md`
-3. 🔴 **强制运行** `compact_memories.py`（不是可选的）：
+1. 自我回顾（做了什么、遇到什么问题、学到了什么）
+2. 🔴 **成果展示** — 整齐展示: 任务名、路径、耗时、产出文件、测试结果、改进建议
+3. 追加 `skill_performance.json`（本次执行数据）
+4. 写 `memory/experiences/{日期}-{摘要}.md`
+5. 🔴 **强制运行** `compact_memories.py`：
       `run_command("python .../compact_memories.py")`
-4. 停看门狗
-5. 删 state.json
+6. 停看门狗
+7. 删 state.json
 
 ## 看门狗启动方式
 ```python

@@ -1,17 +1,14 @@
 {
-  "apiKey": "YOUR_API_KEY_HERE",
+  "apiKey": "sk-your-key-here",
   "baseUrl": "https://api.deepseek.com",
-  "model": "deepseek-v4-flash",
-  "temperature": 0.7,
-  "maxTokens": 131072,
-  "editMode": "yolo",
-  "search": true,
-  "autoInit": true,
   "lang": "zh-CN",
   "preset": "flash",
+  "editMode": "review",
+  "reasoningEffort": "high",
   "theme": "dark",
-  "setupCompleted": true,
+  "search": true,
+  "webSearchEngine": "mojeek",
   "mcp": [],
-  "reasoningEffort": "max",
-  "workspaceDir": ""
+  "mcpServers": {},
+  "setupCompleted": true
 }

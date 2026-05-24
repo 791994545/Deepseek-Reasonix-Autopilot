@@ -1,3 +1,12 @@
+---
+type: experience
+date: 2026-05-24
+task: PK Dashboard 构建
+assessment: success
+path: Standard
+lessons: 4 个具体 Bug + 修复闭环，信息密度最高
+---
+
 # PK: Skill Route Dashboard 构建复盘
 
 ## 做了什么

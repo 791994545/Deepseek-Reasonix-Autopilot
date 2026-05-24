@@ -8,25 +8,8 @@
       "0.9-1.0": "penalty=0.3"
     }
   },
-  "weights": {
-    "toggle-skill": {
-      "weight_penalty": 0.0,
-      "last_error": "手动通过 Dashboard 调整",
-      "last_error_time": "2026-05-24T09:09:22"
-    },
-    "watchdog.py": {
-      "weight_penalty": 0.0,
-      "last_error": "GBK print UnicodeEncodeError — 已修复 (TextIOWrapper)",
-      "last_error_time": "2026-05-24T19:58:30"
-    }
-  },
+  "weights": {},
   "_overrides": {
-    "test/core": {
-      "skills": [
-        "skill-a"
-      ],
-      "updated_at": "2026-05-24T09:09:23"
-    },
     "**web-frontend**/core,enhanced,extended,testing": {
       "skills": {
         "core": [

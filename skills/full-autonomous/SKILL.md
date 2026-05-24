@@ -44,7 +44,7 @@ compact_memories.py      ← complete 时自动调用
 |-------|---------|
 | 0 | 复杂度 + 类型 + 路径 |
 | 1 | 查路由表，加载技能包 |
-| 2a/2b | brainstorming → grill → H-3 → zoom-out → plan |
+| 2a/2b | 按 task_type 动态路由（见下方策略表） |
 | 3 | 编码（遵守工具规则） + 测试 |
 | 4 | 测试 → diagnose → 修复 |
 | 5 | 自我回顾 + 写 skill_performance + experiences + 进化建议 |
@@ -61,6 +61,16 @@ compact_memories.py      ← complete 时自动调用
 | Full (≥8) | 完整 | init → 1→2b→3→4→complete |
 
 Override: "直接回答"→Quick / "全自动"→Full
+
+## Phase 2 策略表（按 task_type）
+
+| task_type | 策略 | 步骤 |
+|-----------|------|------|
+| `code-build` `feature` `refactor` | 设计驱动 | brainstorming → grill → H-3 → zoom-out → plan |
+| `code-audit` `analysis` `explore` | 审计驱动 | 并行 explore 扫描 → zoom-out → plan |
+| `bug-fix` | 诊断驱动 | diagnose → zoom-out → plan |
+| `cli-tool` `script` | 精简设计 | zoom-out → plan |
+> H-1 任务拆分基线在所有策略中通用。
 
 ## 工具选择规则（Phase 3 编码时遵守）
 

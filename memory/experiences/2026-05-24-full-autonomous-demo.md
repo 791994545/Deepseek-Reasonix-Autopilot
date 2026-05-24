@@ -1,3 +1,12 @@
+---
+type: experience
+date: 2026-05-24
+task: full-autonomous 演示
+assessment: partial
+path: Standard
+lessons: GBK 编码修复 + 可泛化规则
+---
+
 # 2026-05-24-full-autonomous-demo.md
 
 ## 做了什么

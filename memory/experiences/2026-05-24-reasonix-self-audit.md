@@ -1,3 +1,12 @@
+---
+type: experience
+date: 2026-05-24
+task: Reasonix 自审
+assessment: success
+path: Full
+lessons: 系统自检发现 + 修复策略
+---
+
 # 自我深度分析报告
 
 ## 做了什么

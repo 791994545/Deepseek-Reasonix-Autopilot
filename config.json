@@ -54,7 +54,9 @@
         "python \"C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\scripts\\compact_memories.py\"",
         "python \"C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\scripts\\run_pipeline.py\"",
         "python \"D:\\demo\\hello.py\"",
-        "python \"D:\\demo\\hello2.py\""
+        "python \"D:\\demo\\hello2.py\"",
+        "python \"D:\\demo\\filecounter.py\"",
+        "for"
       ],
       "pathAllowed": [
         "C:\\Users\\Administrator\\.reasonix\\skills\\full-autonomous\\docs",

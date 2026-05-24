@@ -1,3 +1,12 @@
+---
+type: experience
+date: 2026-05-23
+task: OpenCode 交叉验证
+assessment: success
+path: Quick
+lessons: 交叉验证方法论
+---
+
 # 2026-05-23: OpenCode 交叉验证方法论
 
 ## 场景

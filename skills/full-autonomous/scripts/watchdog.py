@@ -411,6 +411,14 @@ def sync_violations(violations: list[dict]) -> None:
         save_json(ERROR_PATTERNS_PATH, patterns)
     print(f"[看门狗] 已同步 {len(violations)} 条违例到 error_patterns.json")
 
+    # 写反馈文件 → 下次 init 时读取
+    summary = {
+        "last_scan": now_iso(),
+        "violations_count": len(violations),
+        "latest": violations[-1]["detail"] if violations else "",
+    }
+    save_json(REASONIX_HOME / "violation_summary.json", summary)
+
 
 # ── CLI 主入口 ──────────────────────────────────────────
 

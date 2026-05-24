@@ -3,7 +3,7 @@
 每个 Phase 完成时逐项勾选，全部满足后输出 `=== Phase N PASSED ===`。
 
 ## Phase 0
-- [ ] 启动标记 `[Auto] === full-autonomous v3.2` 已输出
+- [ ] 启动标记 `[Auto] === full-autonomous v2.0` 已输出
 - [ ] 类型/复杂度已评估，缺口已扫描
 - [ ] 模式检测完成（normal/silent/proactive）
 - [ ] memory-manager 启动压缩检测已完成

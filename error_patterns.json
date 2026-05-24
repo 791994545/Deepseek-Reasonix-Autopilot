@@ -20,6 +20,7 @@
     "error": "explore() used for bulk file scanning (80 files)",
     "context": "full-autonomous Phase 3: batch task should use run_command+Python",
     "fix": "If task involves >3 files for analysis → use run_command+Python, not explore()",
+    "prevention": "批量文件分析用 explore(subagent) 一次派发，不要逐个 read_file；explore 内部会并发读",
     "confidence": 0.9,
     "skill_id": "full-autonomous",
     "phase": 3
@@ -80,6 +81,7 @@
     "error": "Skipped MANDATORY script steps without justification",
     "context": "Model loaded full-autonomous but did not follow MANDATORY_EXECUTION_SCRIPT",
     "fix": "Each step must output [√] or [√] ⏭️ with reason. No justification = violation.",
+    "prevention": "看门狗监控输出：连续 N 条无 [√]/[√] ⏭️ 标记时自动记违例",
     "confidence": 0.8,
     "skill_id": "full-autonomous",
     "phase": 0

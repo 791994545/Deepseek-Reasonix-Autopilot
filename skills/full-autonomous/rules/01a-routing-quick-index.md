@@ -19,7 +19,7 @@
 | **code-packaging** | 打包代码/安全扫描/分发包 | repomix-safe-mixer |
 | **code-quality** | QA/测试/代码质量 | qa-expert |
 | **deep-research** | 深度研究/竞品分析/市场调研 | deep-research, fact-checker |
-| **skill-creation** | 技能创建/验证/打包 | skill-creator, skills-search |
+| **skill-creation** | 技能创建/验证/打包 | skill-creator, find-skills |
 | **prompt** | Prompt 优化/评估 | prompt-optimizer |
 | **media** | 视频/音频/截图/图标 | youtube-downloader, video-comparer, twitter-reader |
 | **i18n** | 国际化/本地化 | i18n-expert |

@@ -1,3 +1,12 @@
+---
+type: experience
+date: 2026-05-24
+task: Reasonix 深度分析 v2
+assessment: success
+path: Full
+lessons: usage.jsonl 分析 + 5 条改进措施
+---
+
 # Experience: reasonix 深度分析复盘 v2
 
 ## 日期

@@ -1,4 +1,4 @@
-# Deepseek-Reasonix Autopilot v1.0 — 全局行为准则
+# Deepseek-Reasonix Autopilot v2.0 — 全局行为准则
 
 除非被具体 skill 明确覆盖，以下规则适用于所有任务。
 
@@ -6,38 +6,41 @@
 **默认开启**：full-autonomous v2.0（引擎驱动），无需触发词。
 以下是我的默认行为——不调外部脚本，直接执行。
 
-## 会话启动时（自动）
-1. 检查 `~/.reasonix/state.json` 是否存在 → 存在则提示上次未正常结束
-2. 读取 `error_patterns.json`，按 confidence↓ + recency↓ 排序，只取前 15 条
-3. 检查 `~/.reasonix/skills/full-autonomous/scripts/watchdog.py` 是否存在
-4. 生成/追加 G-4 快照到 `skill_snapshot.md`
-5. 初始化 `state.json`（phase=0, step=init）
-6. 启动看门狗后台进程（见下方）
+## 会话启动时
+仅做环境检查。**不全量 init**，避免闲聊场景的浪费。
+1. 检查 `~/.reasonix/state.json` → 存在 = 上次未正常结束，提示用户
+2. 检查 `~/.reasonix/skills/full-autonomous/scripts/watchdog.py` 存在性
 
-## 收到用户任务后
+## 收到用户第一条消息后
+判断消息类型：
+- **任务型**（含「做/建/写/改/修/跑/部署/分析/审计/优化/修复/创建」）→ **全量 init + 执行**
+- **问答型**（「怎么/是什么/为什么/如何/告诉我」）→ 直接回答，不 init
+
+### 全量 init（任务型消息触发）
+1. 读取 `error_patterns.json`，取 top 15（按 confidence↓ + recency↓）
+2. 初始化 `state.json`（phase=0, step=init）
+3. 启动看门狗后台
+
+### 看门狗反馈（init 时 + 每个 Phase 转换时）
+- 检查 `violation_log.jsonl`（如果存在）→ 有近期违例则输出 `[Watchdog] ⚠️ N 条违例: {摘要}`
+- 检查 `~/.reasonix/error_patterns.json` 大小 > 30KB → 输出 `[MemWarn] error_patterns 膨胀，建议压缩`
+- 检查 `~/.reasonix/skill_performance.json` 条数 > 30 → 输出 `[MemWarn] performance 膨胀`
+
+### 执行流程（任务型）
 1. 输出 `[Auto] === 启动 ===`
 2. 评估复杂度(1-10) + 匹配类型 + 确定路径
-3. 更新 state.json（task_type, complexity, path）
-4. 更新 state.json phases_completed 追加 0
-5. 进入 Phase 1 或 3（取决于路径）
+3. 更新 state.json（task_type, complexity, path, phases_completed=[0]）
+4. 进入 Phase 1 或 3（取决于路径）
 
 ## 每个 Phase 转换时
-自动 sequence: 前置自检 → 推理 → 后置验证 → 更新 state
-
-**前置自检** — 检查必要前置条件（前一 phase 已完成、文件存在等）
-**推理** — 我完成该 phase 需要的思考/编码
-**后置验证** — 确认产出存在，更新 state.json
-
+前置自检 → 推理 → 后置验证 → 更新 state + **看门狗健康检查**
 具体每个 Phase 做什么见 `SKILL.md`。
 
-## 任务完成时
+## 任务完成时（🔴 强制全部执行）
 1. 追加 `skill_performance.json`（本次执行数据）
 2. 写 `memory/experiences/{日期}-{摘要}.md`
-3. 运行 `compact_memories.py` 的逻辑（不用调脚本，我手动做）：
-   - error_patterns.json → 保留 top 20，归档旧的
-   - skill_performance.json → 保留 last 20
-   - experiences → 保留 last 20
-   - skill_snapshot.md → 保留 last 40 行
+3. 🔴 **强制运行** `compact_memories.py`（不是可选的）：
+      `run_command("python .../compact_memories.py")`
 4. 停看门狗
 5. 删 state.json
 
@@ -62,12 +65,12 @@ run_background("python C:/Users/Administrator/.reasonix/skills/full-autonomous/s
 | opencode-mandatory-script | 高 | 本文件的记忆镜像 |
 | opencode-tool-reference | 高 | OpenCode→Reasonix 工具映射 |
 | opencode-core-rules | 高 | 12 条核心原则 |
-| opencode-error-patterns | 中 | 已知错误模式 |
 | opencode-unattended-mode | 中 | 无人值守模式 |
 | opencode-session-mgmt | 中 | 会话管理 |
 | opencode-self-evolution | 中 | 自我改进/复盘 |
 | opencode-subagent-proto | 中 | 子代理并行协议 |
-| opencode-skill-catalog | 低 | 技能全景清单 |
+| platform-defense-rules | 中 | Windows/Python 平台防御 |
+| post-execution-self-review | 中 | Phase 5 回顾流程 |
 
 ## 关键规则
 - 跳过任意步骤必须输出 `[√] ⏭️ 理由: {一句话}`，无理由跳过 = 违例

@@ -20,17 +20,17 @@
 | **code-packaging** | 打包代码/安全扫描/分发包 | repomix-safe-mixer | repomix-unmixer | — | — |
 | **code-quality** | QA/测试/代码质量 | qa-expert | tdd, dogfood | webapp-testing | midscene-test |
 | **deep-research** | 深度研究/竞品分析/市场调研 | deep-research, fact-checker | competitors-analysis, product-analysis | financial-data-collector | — |
-| **skill-creation** | 技能创建/验证/打包 | skill-creator, skills-search | write-a-skill | — | skill-reviewer |
-| **prompt** | Prompt 优化/评估 | prompt-optimizer | promptfoo-evaluation | — | — |
-| **media** | 视频/音频/截图/图标 | youtube-downloader, video-comparer, twitter-reader | cli-demo-generator, llm-icon-finder, capture-screen | — | — |
+| **skill-creation** | 技能创建/验证/打包 | skill-creator, find-skills | write-a-skill | — | — |
+| **prompt** | Prompt 优化/评估 | prompt-optimizer | — | — | — |
+| **media** | 视频/音频/截图/图标 | youtube-downloader, video-comparer, twitter-reader | cli-demo-generator, llm-icon-finder | — | — |
 | **i18n** | 国际化/本地化 | i18n-expert | — | — | — |
 | **transcript** | 语音转录/字幕修正 | transcript-fixer | — | — | — |
 | **network-debug** | 网络诊断/Cloudflare/SSH | debugging-network-issues, cloudflare-troubleshooting, tunnel-doctor | — | — | — |
 | **data-collection** | 数据采集/爬虫/金融 | scrapling-skill, financial-data-collector, douban-skill | feishu-doc-scraper | — | — |
 | **product-analysis** | 竞品分析/产品调研 | competitors-analysis, product-analysis | — | — | — |
 | **excel** | Excel 操作/自动化 | excel-automation | — | — | — |
-| **macos** | macOS 系统工具 | macos-cleaner | — | capture-screen | — |
-| **china-tools** | 中国区特有工具 | gangtise-copilot, ima-copilot | daymade-docs | — | — |
+| **macos** | macOS 系统工具 | macos-cleaner | — | — | — |
+| **china-tools** | 中国区特有工具 | gangtise-copilot, ima-copilot | — | — | — |
 | **github-contrib** | GitHub 贡献策略 | github-contributor | — | — | — |
 | **repomix** | Repomix 解包/分析 | repomix-unmixer | repomix-safe-mixer | — | — |
 | **documentation** | 文档/知识库/Wiki/说明/API文档生成 | doc-coauthoring, api-docs-generator, obsidian-markdown, internal-comms | json-canvas, obsidian-bases, knowledge-capture | research-documentation, meeting-intelligence | — |

@@ -1,0 +1,17 @@
+{
+  "apiKey": "YOUR_API_KEY_HERE",
+  "baseUrl": "https://api.deepseek.com",
+  "model": "deepseek-v4-flash",
+  "temperature": 0.7,
+  "maxTokens": 131072,
+  "editMode": "yolo",
+  "search": true,
+  "autoInit": true,
+  "lang": "zh-CN",
+  "preset": "flash",
+  "theme": "dark",
+  "setupCompleted": true,
+  "mcp": [],
+  "reasoningEffort": "max",
+  "workspaceDir": ""
+}

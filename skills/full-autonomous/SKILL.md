@@ -38,6 +38,8 @@ version: 3.4.0
 - **分析/评估/探索类任务自动降级为 Quick 路径**（跳过 Phase 2 全套设计流程，直接进入 Phase 3 并行读取）→ [√]
 - 技能缺口检测 → 有则触发 write-a-skill → [√]
 - 加载 `memory-manager` 做启动时压缩检测 → [√]
+- [√] **项目规则自检** — 检查当前工作目录是否有 `project-rules.md` → 无则生成模板（含项目名/语言/框架/路径约定）并提示用户填写 → [√] {已存在/已生成模板}
+- [√] **成本预算检查** — 加载 `usage.jsonl` 计算最近 10 次调用的平均 token 消耗 → 若单次预估成本 > 预算阈值（默认 4000 tokens/步）则输出 `[Cost] 警告: 预计超预算，建议拆分或降级路径` → [√] {正常/已警告}
 - [√] **合规预检** — 调用 `compliance-check` 验证 Rule 0（技能预检）/ Rule 2（简洁性）/ Rule 8（读后写）→ [√]
 **格式自检**: 检查最近 3 步是否均含 [√] → ✅
 === Phase 0 PASSED ===
@@ -45,6 +47,7 @@ version: 3.4.0
 
 ## Phase 1: 装配
 - 查 rules/01a-routing-quick-index.md → 匹配任务类型获取 Core 技能包 → 需要扩展技能时回查 rules/01-skill-routing-table.md 取 Enhanced/Extended/Testing → 加载 → [√] N 个
+- **路由表自检** — 扫描路由表中所有引用的技能名，检查 `skills/` 下是否存在 → 不存在的技能输出 `[RouteWarn] {技能名} 在路由表中但技能目录不存在` → 同时检查是否有技能存在于 `skills/` 但未被任何路由行引用 → 输出 `[RouteWarn] {技能名} 存在但未被路由表引用` → [√] {全部有效/N 个警告}
 - Quick → 跳 Phase 3 | Standard → Phase 2a | Full → Phase 2b
 === Phase 1 PASSED ===
 
@@ -164,6 +167,8 @@ version: 3.4.0
 - [√] **STEP 5C.2: 写入经验到 memory/experiences/** — `write_file` 创建 `{ISO日期}-{任务摘要}.md`，内容包含：做了什么、遇到什么问题、如何修复的、下次如何预防、本次学到了什么可泛化的规则
 - [√] **STEP 5C.3: 🔴 验证写入** — `read_file skill_performance.json` 确认最后一条为刚写记录 → 失败则重写 + 记违例 → [√] {已验证/N 条}
 - [√] **STEP 5C.4: learnings/ 轮转** — 超过 20 条时删除最旧文件
+- [√] **STEP 5C.5: 记忆整合** — 检查 `memory/experiences/` 总数 → 超过 20 条时触发 `self-improving` Step 4（简化+去重）：合并同类经验为摘要文件，标记原始文件为 `archived`
+- [√] **STEP 5C.6: 路由表验证** — 扫描 `rules/01-skill-routing-table.md` 中引用的所有技能名 vs `skills/` 下实际存在的技能 → 报告缺失和未引用的技能 → [√] {全部有效/N 个警告}
 
 ### 阶段 D: 进化建议（Standard/Full）
 - [√] **STEP 5D.1: 输出 1-3 条进化建议** — 格式：`下次{场景}→{新做法}` → [√] {N 条建议}

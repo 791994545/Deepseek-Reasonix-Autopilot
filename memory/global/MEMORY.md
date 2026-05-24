@@ -7,3 +7,5 @@
 - [opencode-unattended-mode](opencode-unattended-mode.md) — 无人值守模式 — 自动执行/失败换策略/不跳过任何子任务
 - [platform-defense-rules](platform-defense-rules.md) — Windows/Python/Flask 平台防御规则 — 从 PK 构建 5 个 Bug 中提取
 - [post-execution-self-review](post-execution-self-review.md) — 每次全自动执行后自我回顾与进化 — Phase 5 统一回顾流程 A→E
+- [reasonix-git-ssh](reasonix-git-ssh.md) — Reasonix 仓库 git push 使用 SSH 而非 HTTPS
+- [reasonix-roadmap](reasonix-roadmap.md) — Reasonix 技术路线图 — 已生效/已规划/未来方向

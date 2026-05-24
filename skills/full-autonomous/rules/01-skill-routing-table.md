@@ -1,6 +1,6 @@
 # 技能路由表（冻结版）
 
-> 🧊 **此表已冻结**。2026-05-24 稳定版 v3.4.0。
+> 🧊 **此表已冻结**。2026-05-24，Deepseek-Reasonix Autopilot v1.0。
 > 以后新增技能**不需要**修改此表。新技能会被 skill-router 通过 SKILL.md 的 description 关键词自动发现匹配。
 > 如有匹配不准，调整新技能的 description 字段即可，不动此文件。
 

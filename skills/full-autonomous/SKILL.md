@@ -1,8 +1,8 @@
 ---
 
 name: full-autonomous
-description: 五阶段全自动开发剧本 — Phase 0→5，自适应路径 + task-executor 并行 + compliance-guard 审计
-version: 3.4.0
+description: Deepseek-Reasonix Autopilot v1.0 — 五阶段全自动开发剧本，Phase 0→5，自适应路径 + task-executor 并行 + compliance-guard 审计
+version: 1.0.0
 
 ---
 
@@ -28,7 +28,7 @@ version: 3.4.0
 1. 递归深度检测：上下文 `[Auto] === full-autonomous` 出现 ≤2 次 → 继续；否则中止 → [√]
 2. 🔴 **启动看门狗**：`run_background("python ~/.reasonix/scripts/watchdog.py")` → [√] PID:{N}（若已运行则跳过）
 3. 初始化 state.json：`write_file state.json {"phase":0,"step":0,"startedAt":"{ISO时间}"}` → [√]
-3. 输出启动标记 → [Auto] === full-autonomous v3.4 启动 === 时间 → [√]
+3. 输出启动标记 → [Auto] === Deepseek-Reasonix Autopilot v1.0 启动 === 时间 → [√]
 
 ## Phase 0: 分类
 <超快速路径入口> 若复杂度 ≤ 3 且 类型为 analysis/explore/diagnose → 输出类型后直接跳 Phase 3，跳过其余 → [√]

@@ -1,4 +1,4 @@
-# Reasonix 全局行为准则
+# Deepseek-Reasonix Autopilot v1.0 — 全局行为准则
 
 除非被具体 skill 明确覆盖，以下规则适用于所有任务。
 

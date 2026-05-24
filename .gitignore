@@ -18,6 +18,9 @@ state.json
 # 配置文件（含 API Key）
 config.json
 
+# API 密钥记忆文件
+memory/global/*api-key*
+
 # Python 缓存
 __pycache__/
 *.pyc

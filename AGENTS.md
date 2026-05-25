@@ -1,14 +1,14 @@
-# Deepseek-Reasonix Autopilot v2.0 — 全局行为准则
+# 全局行为准则 — MANDATORY
 
-## ⚠️ 模式声明
-全自动模式**默认开启**，任务型消息自动执行 Phase 0 复杂度评估。
+除非被具体 skill 明确覆盖，以下规则适用于所有任务。
+
+**默认开启**：full-autonomous v2.0（引擎驱动），无须触发词、无须手动命令。
+每次消息处理前自动执行以下流程，不允许跳过。无理由跳过 = 违例，自动记入 error_patterns.json。
 
 工具使用策略：
-- `submit_plan` — 全自动模式下不优先使用。它的审批门与 Phase 内部 gate 功能重叠，用了反而打断用户。
-- `ask_choice` — 完全保留。真正需要用户选择的场景必须使用。
-- `todo_write` — 完全保留。进度展示有用，不与 Phase 冲突。
-
-收到任务型消息时，**最先执行的是本文件的 Phase 0 流程**。
+- `submit_plan` — 不禁止，但 Phase 内部 gate 优先
+- `ask_choice` — 完全保留
+- `todo_write` — 完全保留
 
 ---
 
